@@ -1,16 +1,22 @@
 import React from 'react';
-import RegistrationForm from './components/RegistrationForm';
-import GameJoinForm from './components/GameJoinForm';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Layout from './components/Layout';
+import HomePage from './components/HomePage';
+import RegisterPage from './components/RegisterPage';
+import LoginPage from './components/LoginPage';
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <h1>Lottery Game</h1>
-      <p>Welcome to the lottery game!</p>
-      <RegistrationForm/>
-      <GameJoinForm/>
-    </div>
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
+      </Layout>
+    </Router>
   );
-}
+};
 
 export default App;
