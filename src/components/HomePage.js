@@ -1,107 +1,164 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import jwt_decode from 'jwt-decode';
+import axios from '../utils/axiosInstance'; // Import the axiosInstance
 
 const HomePage = () => {
-  const [games, setGames] = useState([]);
-  const [userId, setUserId] = useState(null);
+  const [userGames, setUserGames] = useState([]);
+  const [searchedGames, setSearchedGames] = useState([]);
+  const [isSearchPerformed, setIsSearchPerformed] = useState(false);
+  const [capacity, setCapacity] = useState('');
+  const [cost, setCost] = useState('');
+  const [type, setType] = useState('ROYALE'); // Default type to ROYALE
+  const [state] = useState('PENDING_PLAYERS'); // Set state to PENDING_PLAYERS
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        const config = {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        };
-
-        // Fetch the user data from the backend API
-        const response = await axios.get(`http://localhost:8080/users/${userId}`, config);
-        const userData = response.data;
-
-        // Retrieve the list of game IDs from the user data
-        const gameIds = userData.games || [];
-
-        // Set the games state with the retrieved game IDs
-        setGames(gameIds);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    // Extract userId from the token
-    const token = localStorage.getItem('token');
-    if (token) {
-      const decodedToken = jwt_decode(token);
-      const { sub: userId } = decodedToken;
-      setUserId(userId);
-    }
-
-    // Fetch user data when the component mounts
-    if (userId) {
-      fetchUserData();
-    }
-  }, [userId]);
-
-  const isLoggedIn = !!localStorage.getItem('token');
-
-  const handleJoinGame = async (event) => {
-    event.preventDefault();
-    const gameId = event.target.gameId.value;
-
+  const fetchUserData = async () => {
     try {
-      const token = localStorage.getItem('token');
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-
-      // Make the API request to join the game using the gameId
-      await axios.put(`http://localhost:8080/games/${gameId}/join`, null, config);
-      // Handle successful response or any additional logic
-      window.location.reload();
+      const response = await axios.get('/users/me');
+      const userData = response.data;
+      const gameIds = userData.games || [];
+      setUserGames(gameIds);
     } catch (error) {
       console.error(error);
     }
   };
 
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  const handleSearch = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.get('/games', {
+        params: {
+          capacity: capacity || undefined,
+          cost: cost || undefined,
+          type: type || undefined,
+          state: state || undefined,
+        },
+      });
+      const gameData = response.data.games || [];
+      setSearchedGames(gameData);
+      setIsSearchPerformed(true);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleCapacityChange = (event) => {
+    setCapacity(event.target.value);
+  };
+
+  const handleCostChange = (event) => {
+    setCost(event.target.value);
+  };
+
+  const handleTypeChange = (event) => {
+    setType(event.target.value);
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      handleSearch(event);
+    }
+  };
+
+  const handleJoinGame = async (gameId) => {
+    try {
+      await axios.put(`/games/${gameId}/join`);
+      // Refresh the user's game list and searched games
+      fetchUserData();
+      setSearchedGames([]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const hasUserJoinedGame = (gameId) => {
+    return userGames.some((game) => game.gameId === gameId);
+  };
+
   return (
     <div>
       <h1>Welcome to the Redistributor Game!</h1>
-      {isLoggedIn && (
-        <>
-          <div>
-            <p>Join a game by entering the game ID:</p>
-            <form onSubmit={handleJoinGame}>
-              <input type="text" name="gameId" placeholder="Enter game ID" required />
-              <button type="submit">Join Game</button>
-            </form>
-          </div>
-          <div>
-            <h2>Your Games:</h2>
-            <ul>
-              {games.map((gameId) => (
-                <li key={gameId}>
-                  <Link to={`/games/${gameId}`}>Game {gameId}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </>
-      )}
-      {!isLoggedIn && (
+      {userGames.length > 0 && (
         <div>
-          <p>Sign in or register to join a game:</p>
-          <p>
-            Don't have an account? <Link to="/register">Register</Link>
-          </p>
-          <p>
-            Already have an account? <Link to="/login">Login</Link>
-          </p>
+          <h2>Your Games:</h2>
+          <ul>
+            {userGames.map((game) => (
+              <li key={game.gameId}>
+                <div>
+                  <div>Game ID: {game.gameId}</div>
+                  <div>Capacity: {game.capacity}</div>
+                  <div>Cost: {game.cost}</div>
+                  <div>Type: {game.type}</div>
+                  <div>State: {game.state}</div>
+                  {game.playerEmails && (
+                    <div>Players: {game.playerEmails}</div>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
+      )}
+      <div>
+        <input
+          type="text"
+          name="capacity"
+          placeholder="Capacity"
+          value={capacity}
+          onChange={handleCapacityChange}
+          onKeyDown={handleKeyDown}
+        />
+        <input
+          type="text"
+          name="cost"
+          placeholder="Cost"
+          value={cost}
+          onChange={handleCostChange}
+          onKeyDown={handleKeyDown}
+        />
+        <select
+          name="type"
+          value={type}
+          onChange={handleTypeChange}
+        >
+          <option value="ROYALE">ROYALE</option>
+          <option value="REDISTRIBUTE">REDISTRIBUTE</option>
+        </select>
+        <button type="button" onClick={handleSearch}>
+          Search
+        </button>
+      </div>
+      {searchedGames.length > 0 && (
+        <div>
+          <h2>Search Results:</h2>
+          <ul>
+            {searchedGames.map((game) => (
+              <li key={game.gameId}>
+                <div>
+                  {game.gameId && <div>Game ID: {game.gameId}</div>}
+                  {game.capacity && <div>Capacity: {game.capacity}</div>}
+                  {game.cost && <div>Cost: {game.cost}</div>}
+                  {game.type && <div>Type: {game.type}</div>}
+                  {game.state && <div>State: {game.state}</div>}
+                  {game.playerEmails && (
+                    <div>Players: {game.playerEmails}</div>
+                  )}
+                  {!hasUserJoinedGame(game.gameId) && (
+                    <button onClick={() => handleJoinGame(game.gameId)}>
+                      Join Game
+                    </button>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {isSearchPerformed && searchedGames.length === 0 && (
+        <div>No games found.</div>
       )}
     </div>
   );

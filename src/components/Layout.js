@@ -1,13 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { isLoggedIn } from '../utils/auth';
 import LogoutButton from './LogoutButton';
 
 const Layout = ({ children }) => {
+const navigate = useNavigate();
   return (
     <div>
       {/* Other layout content */}
-      {isLoggedIn() && <LogoutButton />}
+      {isLoggedIn() && <LogoutButton navigate={navigate} />}
       <nav>
         <ul>
           <li>
