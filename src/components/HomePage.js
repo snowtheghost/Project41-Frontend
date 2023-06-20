@@ -8,13 +8,14 @@ const HomePage = () => {
   const [isSearchPerformed, setIsSearchPerformed] = useState(false);
   const [capacity, setCapacity] = useState('');
   const [cost, setCost] = useState('');
-  const [type, setType] = useState('ROYALE'); // Default type to ROYALE
+  const [type, setType] = useState('');
   const [state] = useState('PENDING_PLAYERS'); // Set state to PENDING_PLAYERS
 
   const fetchUserData = async () => {
     try {
       const response = await axios.get('/users/me');
       const userData = response.data;
+      localStorage.setItem('username', userData.username);
       const gameIds = userData.games || [];
       setUserGames(gameIds);
     } catch (error) {
@@ -106,12 +107,21 @@ const HomePage = () => {
               <li key={game.gameId}>
                 <div>
                   <div>Game ID: {game.gameId}</div>
-                  <div>Capacity: {game.capacity}</div>
-                  <div>Cost: {game.cost}</div>
+                  {/* <div>Capacity: {game.capacity}</div> */}
                   <div>Type: {game.type}</div>
-                  <div>State: {game.state}</div>
+                  <div>Cost: ${game.cost}</div>
                   {game.players && (
                     <div>Players: {game.players.length}</div>
+                  )}
+                  <div>State: {game.state}</div>
+                  {game.state === "COMPLETED" && (
+                    <div>
+                      {game.winners.hasOwnProperty(localStorage.getItem('username')) ? (
+                        <div>Congratulations, you won ${game.winners[localStorage.getItem('username')]}!</div>
+                      ) : (
+                        <div>You did not win anything here.</div>
+                      )}
+                    </div>
                   )}
                 </div>
               </li>
@@ -142,6 +152,7 @@ const HomePage = () => {
             value={type}
             onChange={handleTypeChange}
           >
+            <option>ALL</option>
             <option value="ROYALE">ROYALE</option>
             <option value="REDISTRIBUTE">REDISTRIBUTE</option>
           </select>
@@ -158,13 +169,13 @@ const HomePage = () => {
               <li key={game.gameId}>
                 <div>
                   {game.gameId && <div>Game ID: {game.gameId}</div>}
-                  {game.capacity && <div>Capacity: {game.capacity}</div>}
-                  {game.cost && <div>Cost: {game.cost}</div>}
                   {game.type && <div>Type: {game.type}</div>}
-                  {game.state && <div>State: {game.state}</div>}
+                  {game.cost && <div>Cost: ${game.cost}</div>}
                   {game.players && (
                     <div>Players: {game.players.length}</div>
                   )}
+                  {game.capacity && <div>Capacity: {game.capacity}</div>}
+                  {game.state && <div>State: {game.state}</div>}
                   {!hasUserJoinedGame(game.gameId) && game.capacity > game.players.length && (
                     <button onClick={() => handleJoinGame(game.gameId)}>
                       Join Game
