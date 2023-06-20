@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const RegisterPage = () => {
   const navigate = useNavigate();
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -13,8 +14,11 @@ const RegisterPage = () => {
 
     try {
       // Make the API request to register the user
-      await axios.post('http://localhost:8080/users/register', { email, password });
+      const response = await axios.post('http://localhost:8080/users/register', { username, email, password });
+      const token = response.data.token;
       // Handle successful registration or any additional logic
+      localStorage.setItem('token', token);
+      // Redirect the user to the homepage or any other desired page
       navigate('/');
     } catch (error) {
       // Handle registration errors, e.g., display an error message to the user
@@ -27,6 +31,7 @@ const RegisterPage = () => {
     <div>
       <h1>Register</h1>
       <form onSubmit={handleRegister}>
+        <input type="username" name="username" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} required />
         <input type="email" name="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <input type="password" name="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         <button type="submit">Register</button>

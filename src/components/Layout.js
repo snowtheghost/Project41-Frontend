@@ -14,16 +14,6 @@ const navigate = useNavigate();
           <li>
             <Link to="/">Home</Link>
           </li>
-          {!isLoggedIn() && (
-            <>
-              <li>
-                <Link to="/register">Register</Link>
-              </li>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-            </>
-          )}
         </ul>
       </nav>
       <div>{children}</div>

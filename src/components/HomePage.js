@@ -24,10 +24,14 @@ const HomePage = () => {
 
   useEffect(() => {
     fetchUserData();
+    handleSearch();
   }, []);
 
   const handleSearch = async (event) => {
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
+
     try {
       const response = await axios.get('/games', {
         params: {
@@ -78,9 +82,22 @@ const HomePage = () => {
     return userGames.some((game) => game.gameId === gameId);
   };
 
+  const isLoggedIn = !!localStorage.getItem('token');
+
   return (
     <div>
       <h1>Welcome to the Redistributor Game!</h1>
+      {!isLoggedIn && (
+        <div>
+          <p>Sign in or register to join a game:</p>
+          <p>
+            Don't have an account? <Link to="/register">Register</Link>
+          </p>
+          <p>
+            Already have an account? <Link to="/login">Login</Link>
+          </p>
+        </div>
+      )}
       {userGames.length > 0 && (
         <div>
           <h2>Your Games:</h2>
@@ -93,8 +110,8 @@ const HomePage = () => {
                   <div>Cost: {game.cost}</div>
                   <div>Type: {game.type}</div>
                   <div>State: {game.state}</div>
-                  {game.playerEmails && (
-                    <div>Players: {game.playerEmails}</div>
+                  {game.players && (
+                    <div>Players: {game.players.length}</div>
                   )}
                 </div>
               </li>
@@ -102,38 +119,40 @@ const HomePage = () => {
           </ul>
         </div>
       )}
-      <div>
-        <input
-          type="text"
-          name="capacity"
-          placeholder="Capacity"
-          value={capacity}
-          onChange={handleCapacityChange}
-          onKeyDown={handleKeyDown}
-        />
-        <input
-          type="text"
-          name="cost"
-          placeholder="Cost"
-          value={cost}
-          onChange={handleCostChange}
-          onKeyDown={handleKeyDown}
-        />
-        <select
-          name="type"
-          value={type}
-          onChange={handleTypeChange}
-        >
-          <option value="ROYALE">ROYALE</option>
-          <option value="REDISTRIBUTE">REDISTRIBUTE</option>
-        </select>
-        <button type="button" onClick={handleSearch}>
-          Search
-        </button>
-      </div>
+      {isLoggedIn && (
+        <div>
+          <input
+            type="text"
+            name="capacity"
+            placeholder="Capacity"
+            value={capacity}
+            onChange={handleCapacityChange}
+            onKeyDown={handleKeyDown}
+          />
+          <input
+            type="text"
+            name="cost"
+            placeholder="Cost"
+            value={cost}
+            onChange={handleCostChange}
+            onKeyDown={handleKeyDown}
+          />
+          <select
+            name="type"
+            value={type}
+            onChange={handleTypeChange}
+          >
+            <option value="ROYALE">ROYALE</option>
+            <option value="REDISTRIBUTE">REDISTRIBUTE</option>
+          </select>
+          <button type="button" onClick={handleSearch}>
+            Search
+          </button>
+        </div>
+      )}
       {searchedGames.length > 0 && (
         <div>
-          <h2>Search Results:</h2>
+          <h2>Active Games:</h2>
           <ul>
             {searchedGames.map((game) => (
               <li key={game.gameId}>
@@ -143,10 +162,10 @@ const HomePage = () => {
                   {game.cost && <div>Cost: {game.cost}</div>}
                   {game.type && <div>Type: {game.type}</div>}
                   {game.state && <div>State: {game.state}</div>}
-                  {game.playerEmails && (
-                    <div>Players: {game.playerEmails}</div>
+                  {game.players && (
+                    <div>Players: {game.players.length}</div>
                   )}
-                  {!hasUserJoinedGame(game.gameId) && (
+                  {!hasUserJoinedGame(game.gameId) && game.capacity > game.players.length && (
                     <button onClick={() => handleJoinGame(game.gameId)}>
                       Join Game
                     </button>
