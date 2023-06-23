@@ -14,6 +14,9 @@ const navigate = useNavigate();
           <li>
             <Link to="/">Home</Link>
           </li>
+          <li>
+            <Link to="/funds">Funds</Link>
+          </li>
         </ul>
       </nav>
       <div>{children}</div>

@@ -4,6 +4,7 @@ import Layout from './components/Layout';
 import HomePage from './components/HomePage';
 import RegisterPage from './components/RegisterPage';
 import LoginPage from './components/LoginPage';
+import FundsPage from './components/FundsPage';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/funds" element={<FundsPage />} />
         </Routes>
       </Layout>
     </Router>
