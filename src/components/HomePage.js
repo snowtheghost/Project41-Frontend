@@ -37,7 +37,7 @@ const HomePage = () => {
       const response = await axios.get('/games', {
         params: {
           capacity: capacity || undefined,
-          cost: cost || undefined,
+          cost: cost * 100 || undefined,
           type: type || undefined,
           state: state || undefined,
         },
@@ -109,7 +109,7 @@ const HomePage = () => {
                   <div>Game ID: {game.gameId}</div>
                   {/* <div>Capacity: {game.capacity}</div> */}
                   <div>Type: {game.type}</div>
-                  <div>Cost: ${game.cost}</div>
+                  <div>Cost: ${game.cost / 100}</div>
                   {game.players && (
                     <div>Players: {game.players.length}</div>
                   )}
@@ -117,7 +117,7 @@ const HomePage = () => {
                   {game.state === "COMPLETED" && (
                     <div>
                       {game.winners.hasOwnProperty(localStorage.getItem('username')) ? (
-                        <div>Congratulations, you won ${game.winners[localStorage.getItem('username')]}!</div>
+                        <div>Congratulations, you won ${game.winners[localStorage.getItem('username')] / 100}!</div>
                       ) : (
                         <div>You did not win anything here.</div>
                       )}
@@ -170,7 +170,7 @@ const HomePage = () => {
                 <div>
                   {game.gameId && <div>Game ID: {game.gameId}</div>}
                   {game.type && <div>Type: {game.type}</div>}
-                  {game.cost && <div>Cost: ${game.cost}</div>}
+                  {game.cost && <div>Cost: ${game.cost / 100}</div>}
                   {game.players && (
                     <div>Players: {game.players.length}</div>
                   )}
