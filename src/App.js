@@ -5,6 +5,8 @@ import HomePage from './components/HomePage';
 import RegisterPage from './components/RegisterPage';
 import LoginPage from './components/LoginPage';
 import FundsPage from './components/FundsPage';
+import ProtectedRoute from './components/ProtectedRoute';
+import { Navigate } from 'react-router-dom'
 
 const App = () => {
   return (
@@ -12,9 +14,15 @@ const App = () => {
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/funds" element={<FundsPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/funds" element={
+              <ProtectedRoute>
+                <FundsPage />
+              </ProtectedRoute>
+            } 
+          />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Layout>
     </Router>
