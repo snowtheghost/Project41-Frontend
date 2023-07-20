@@ -4,7 +4,8 @@ import { isLoggedIn } from '../utils/auth';
 import LogoutButton from './LogoutButton';
 
 const Layout = ({ children }) => {
-const navigate = useNavigate();
+  const navigate = useNavigate();
+
   return (
     <div>
       {/* Other layout content */}
@@ -14,9 +15,11 @@ const navigate = useNavigate();
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
-            <Link to="/funds">Funds</Link>
-          </li>
+          {isLoggedIn() && (
+            <li>
+              <Link to="/funds">Funds</Link>
+            </li>
+          )}
         </ul>
       </nav>
       <div>{children}</div>
