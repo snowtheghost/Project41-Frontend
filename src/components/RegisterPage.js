@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../utils/axiosInstance';
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const RegisterPage = () => {
 
     try {
       // Make the API request to register the user
-      const response = await axios.post('http://localhost:8080/users/register', { username, email, password });
+      const response = await axios.post('/users/register', { username, email, password });
       const token = response.data.token;
       // Handle successful registration or any additional logic
       localStorage.setItem('token', token);
