@@ -87,7 +87,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <h1>Welcome to the Redistributor Game!</h1>
+      <h1>Project41 Website</h1>
       {!isLoggedIn && (
         <div>
           <p>Sign in or register to join a game:</p>
