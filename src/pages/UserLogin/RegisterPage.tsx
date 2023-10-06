@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from '../utils/axiosInstance';
+import axios from '../../utils/axiosInstance';
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -14,7 +14,11 @@ const RegisterPage = () => {
 
     try {
       // Make the API request to register the user
-      const response = await axios.post('/users/register', { username, email, password });
+      const response = await axios.post('/users/register', {
+        username,
+        email,
+        password,
+      });
       const token = response.data.token;
       // Handle successful registration or any additional logic
       localStorage.setItem('token', token);
@@ -31,13 +35,36 @@ const RegisterPage = () => {
     <div>
       <h1>Register</h1>
       <form onSubmit={handleRegister}>
-        <input type="username" name="username" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} required />
-        <input type="email" name="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <input type="password" name="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <button type="submit">Register</button>
+        <input
+          type='username'
+          name='username'
+          placeholder='Username'
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+        <input
+          type='email'
+          name='email'
+          placeholder='Email'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type='password'
+          name='password'
+          placeholder='Password'
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button type='submit'>Register</button>
       </form>
       {errorMessage && <p>{errorMessage}</p>}
-      <p>Already have an account? <Link to="/login">Login</Link></p>
+      <p>
+        Already have an account? <Link to='/login'>Login</Link>
+      </p>
     </div>
   );
 };
