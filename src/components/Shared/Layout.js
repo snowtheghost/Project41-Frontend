@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { isLoggedIn } from '../../utils/auth';
-import LogoutButton from './LogoutButton';
+import LogoutButton from '../UserLogin/LogoutButton';
 
 const Layout = ({ children }) => {
   const navigate = useNavigate();

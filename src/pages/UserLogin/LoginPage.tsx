@@ -7,7 +7,8 @@ const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async (event) => {
+  // THIS TYPING IS HORRIBLE. FIX THIS.
+  const handleLogin = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
 
     try {

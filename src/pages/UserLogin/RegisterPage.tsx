@@ -9,7 +9,8 @@ const RegisterPage = () => {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleRegister = async (event) => {
+  // THIS TYPING IS BAD. FIX THIS.
+  const handleRegister = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
 
     try {
