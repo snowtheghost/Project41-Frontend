@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from '../utils/axiosInstance'; // Import the axiosInstance
+import axios from '../../utils/axiosInstance'; // Import the axiosInstance
 
 const HomePage = () => {
   const [userGames, setUserGames] = useState([]);
@@ -92,10 +92,10 @@ const HomePage = () => {
         <div>
           <p>Sign in or register to join a game:</p>
           <p>
-            Don't have an account? <Link to="/register">Register</Link>
+            Don't have an account? <Link to='/register'>Register</Link>
           </p>
           <p>
-            Already have an account? <Link to="/login">Login</Link>
+            Already have an account? <Link to='/login'>Login</Link>
           </p>
         </div>
       )}
@@ -110,14 +110,18 @@ const HomePage = () => {
                   {/* <div>Capacity: {game.capacity}</div> */}
                   <div>Type: {game.type}</div>
                   <div>Cost: ${game.cost / 100}</div>
-                  {game.players && (
-                    <div>Players: {game.players.length}</div>
-                  )}
+                  {game.players && <div>Players: {game.players.length}</div>}
                   <div>State: {game.state}</div>
-                  {game.state === "COMPLETED" && (
+                  {game.state === 'COMPLETED' && (
                     <div>
-                      {game.winners.hasOwnProperty(localStorage.getItem('username')) ? (
-                        <div>Congratulations, you won ${game.winners[localStorage.getItem('username')] / 100}!</div>
+                      {game.winners.hasOwnProperty(
+                        localStorage.getItem('username')
+                      ) ? (
+                        <div>
+                          Congratulations, you won $
+                          {game.winners[localStorage.getItem('username')] / 100}
+                          !
+                        </div>
                       ) : (
                         <div>You did not win anything here.</div>
                       )}
@@ -132,31 +136,27 @@ const HomePage = () => {
       {isLoggedIn && (
         <div>
           <input
-            type="text"
-            name="capacity"
-            placeholder="Capacity"
+            type='text'
+            name='capacity'
+            placeholder='Capacity'
             value={capacity}
             onChange={handleCapacityChange}
             onKeyDown={handleKeyDown}
           />
           <input
-            type="text"
-            name="cost"
-            placeholder="Cost"
+            type='text'
+            name='cost'
+            placeholder='Cost'
             value={cost}
             onChange={handleCostChange}
             onKeyDown={handleKeyDown}
           />
-          <select
-            name="type"
-            value={type}
-            onChange={handleTypeChange}
-          >
+          <select name='type' value={type} onChange={handleTypeChange}>
             <option>ALL</option>
-            <option value="ROYALE">ROYALE</option>
-            <option value="REDISTRIBUTE">REDISTRIBUTE</option>
+            <option value='ROYALE'>ROYALE</option>
+            <option value='REDISTRIBUTE'>REDISTRIBUTE</option>
           </select>
-          <button type="button" onClick={handleSearch}>
+          <button type='button' onClick={handleSearch}>
             Search
           </button>
         </div>
@@ -171,16 +171,15 @@ const HomePage = () => {
                   {game.gameId && <div>Game ID: {game.gameId}</div>}
                   {game.type && <div>Type: {game.type}</div>}
                   {game.cost && <div>Cost: ${game.cost / 100}</div>}
-                  {game.players && (
-                    <div>Players: {game.players.length}</div>
-                  )}
+                  {game.players && <div>Players: {game.players.length}</div>}
                   {game.capacity && <div>Capacity: {game.capacity}</div>}
                   {game.state && <div>State: {game.state}</div>}
-                  {!hasUserJoinedGame(game.gameId) && game.capacity > game.players.length && (
-                    <button onClick={() => handleJoinGame(game.gameId)}>
-                      Join Game
-                    </button>
-                  )}
+                  {!hasUserJoinedGame(game.gameId) &&
+                    game.capacity > game.players.length && (
+                      <button onClick={() => handleJoinGame(game.gameId)}>
+                        Join Game
+                      </button>
+                    )}
                 </div>
               </li>
             ))}

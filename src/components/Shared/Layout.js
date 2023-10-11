@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { isLoggedIn } from '../utils/auth';
-import LogoutButton from './LogoutButton';
+import { isLoggedIn } from '../../utils/auth';
+import LogoutButton from '../UserLogin/LogoutButton';
 
 const Layout = ({ children }) => {
   const navigate = useNavigate();
@@ -13,11 +13,11 @@ const Layout = ({ children }) => {
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to='/'>Home</Link>
           </li>
           {isLoggedIn() && (
             <li>
-              <Link to="/funds">Funds</Link>
+              <Link to='/funds'>Funds</Link>
             </li>
           )}
         </ul>
