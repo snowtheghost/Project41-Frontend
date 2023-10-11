@@ -1,5 +1,5 @@
 import React from 'react';
-import { logout } from '../utils/auth';
+import { logout } from '../../utils/auth';
 
 const LogoutButton = ({ navigate }) => {
   const handleLogout = () => {
@@ -8,9 +8,7 @@ const LogoutButton = ({ navigate }) => {
     window.location.reload();
   };
 
-  return (
-    <button onClick={handleLogout}>Logout</button>
-  );
+  return <button onClick={handleLogout}>Logout</button>;
 };
 
 export default LogoutButton;

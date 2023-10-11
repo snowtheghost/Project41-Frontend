@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from '../utils/axiosInstance';
+import axios from '../../utils/axiosInstance';
 import { useNavigate, Link } from 'react-router-dom';
 
 const LoginPage = () => {
@@ -7,7 +7,9 @@ const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async (event) => {
+  // TODO: THIS TYPING IS HORRIBLE. FIX THIS.
+  // We should also move this into a hook instead of keeping it in here.
+  const handleLogin = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
 
     try {
@@ -27,11 +29,25 @@ const LoginPage = () => {
     <div>
       <h1>Login</h1>
       <form onSubmit={handleLogin}>
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-        <button type="submit">Login</button>
+        <input
+          type='email'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder='Email'
+          required
+        />
+        <input
+          type='password'
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder='Password'
+          required
+        />
+        <button type='submit'>Login</button>
       </form>
-      <p>Don't have an account? <Link to="/register">Register</Link></p>
+      <p>
+        Don't have an account? <Link to='/register'>Register</Link>
+      </p>
     </div>
   );
 };
