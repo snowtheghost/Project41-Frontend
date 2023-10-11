@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from '../../utils/axiosInstance';
 import { useNavigate, Link } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -43,7 +44,8 @@ const LoginPage = () => {
           placeholder='Password'
           required
         />
-        <button type='submit'>Login</button>
+        <Button variant='contained'>Login</Button>
+        {/* <button type='submit'>Login</button> */}
       </form>
       <p>
         Don't have an account? <Link to='/register'>Register</Link>
