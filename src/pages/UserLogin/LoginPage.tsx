@@ -1,16 +1,23 @@
-import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+
+import LoginContainer from 'src/components/UserLogin/LoginContainer';
+
 import axios from '../../utils/axiosInstance';
-import { useNavigate, Link } from 'react-router-dom';
-import { Button } from '@mui/material';
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  // TODO: THIS TYPING IS HORRIBLE. FIX THIS.
+  // TODO: Event PARAMETER TYPING IS HORRIBLE. FIX THIS.
   // We should also move this into a hook instead of keeping it in here.
-  const handleLogin = async (event: { preventDefault: () => void }) => {
+  const handleLogin = async (
+    event: { preventDefault: () => void },
+    email: string,
+    password: string,
+    userType: string
+  ) => {
     event.preventDefault();
 
     try {
@@ -27,30 +34,30 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleLogin}>
-        <input
-          type='email'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder='Email'
-          required
-        />
-        <input
-          type='password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder='Password'
-          required
-        />
-        <Button variant='contained'>Login</Button>
-        {/* <button type='submit'>Login</button> */}
-      </form>
-      <p>
-        Don't have an account? <Link to='/register'>Register</Link>
-      </p>
-    </div>
+    <Grid
+      container
+      sx={{
+        display: 'inline-flex',
+        backgroundColor: '#F9F8EB',
+        width: '100%',
+        height: '100%',
+      }}
+    >
+      <Box
+        className='body'
+        sx={{
+          width: '50%',
+          display: 'inline-grid',
+          justifyContent: 'center',
+          padding: '96px 0 0 0',
+        }}
+      >
+        Main body information
+      </Box>
+      <Box className='sidebar' sx={{ width: '50%', justifyContent: 'center' }}>
+        <LoginContainer handleLogin={handleLogin} />
+      </Box>
+    </Grid>
   );
 };
 
