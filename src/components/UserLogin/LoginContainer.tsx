@@ -1,12 +1,11 @@
 import { useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 
-import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import { Link as RouterLink } from 'react-router-dom';
 
 export type userType = 'Participant' | 'Researcher';
 
@@ -23,21 +22,15 @@ const LoginContainer = (props: Props) => {
   const { handleLogin } = props;
   const [userType, setUserType] = useState<userType>('Participant');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState(''); // Pretty bad. Find a better solution
+  const [password, setPassword] = useState('');
 
   return (
-    <Box
-      sx={{
-        display: 'inline-block',
-        justifyContent: 'center',
-        padding: '16px 64px 64px 64px',
-      }}
-    >
+    <Grid container sx={{ padding: '1rem' }}>
       <Typography variant='h4' sx={{ fontWeight: 800, margin: '1rem' }}>
         Login As...
       </Typography>
       <Grid container sx={{ justifyContent: 'center' }}>
-        <Grid item xs={6}>
+        <Grid className='Participant-Button' item xs={6}>
           <Button
             onClick={() => setUserType('Participant')}
             sx={{
@@ -58,7 +51,7 @@ const LoginContainer = (props: Props) => {
             Participant
           </Button>
         </Grid>
-        <Grid item xs={6}>
+        <Grid className='Researcher-Button' item xs={6}>
           <Button
             onClick={() => setUserType('Researcher')}
             sx={{
@@ -83,50 +76,64 @@ const LoginContainer = (props: Props) => {
         sx={{
           backgroundColor: '#05004E',
           height: '100%',
-          width: '400px',
+          width: '100%',
           display: 'inline-block',
           justifyContent: 'center',
-          padding: '24px 0 0 0',
+          padding: '2rem 0',
           borderRadius: 4,
           borderTopLeftRadius: 0,
           borderTopRightRadius: 0,
         }}
       >
         <Grid container sx={{ justifyContent: 'center', width: '100%' }}>
-          <form onSubmit={(e) => handleLogin(e, email, password, userType)}>
-            <Grid item xs={6}>
+          <form
+            onSubmit={(e) => handleLogin(e, email, password, userType)}
+            style={{ width: '100%', padding: '1rem' }}
+          >
+            <Grid
+              container
+              sx={{ justifyContent: 'space-between', padding: '0.5rem 0' }}
+            >
               <Typography
-                sx={{ color: '#EBA6A6', margin: '8px 4px', width: 'auto' }}
+                sx={{ color: '#EBA6A6', fontWeight: 800, margin: '0.25rem' }}
               >
-                Email:
+                E-mail:
               </Typography>
+              <input
+                type='email'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder='Email'
+                required
+                style={{ width: '70%' }}
+              />
             </Grid>
-            <input
-              type='email'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder='Email'
-              required
-            />
-            <Typography sx={{ color: '#EBA6A6', margin: '4px' }}>
-              Password:
-            </Typography>
-            <input
-              type='password'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder='Password'
-              required
-            />
+            <Grid
+              container
+              sx={{ justifyContent: 'space-between', padding: '0.5rem 0' }}
+            >
+              <Typography
+                sx={{ color: '#EBA6A6', fontWeight: 800, margin: '0.25rem' }}
+              >
+                Password:
+              </Typography>
+              <input
+                type='password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder='Password'
+                required
+                style={{ width: '70%' }}
+              />
+            </Grid>
             <Button
               variant='contained'
               type='submit'
               sx={{
-                padding: '4px',
-                margin: '16px',
-                display: 'block',
-                backgroundColor: '#76B39D',
-                width: '70%',
+                margin: '1rem 0',
+                backgroundColor:
+                  userType === 'Participant' ? '#76B39D' : '#FF9F65',
+                width: '100%',
                 fontWeight: 800,
               }}
             >
@@ -137,13 +144,13 @@ const LoginContainer = (props: Props) => {
 
         <Link
           component={RouterLink}
-          sx={{ color: '#EBA6A6', margin: '16px', padding: '8px' }}
+          sx={{ color: '#EBA6A6', margin: '1rem', padding: '0.5rem' }}
           to='/register'
         >
           Don't have an account?
         </Link>
       </Paper>
-    </Box>
+    </Grid>
   );
 };
 

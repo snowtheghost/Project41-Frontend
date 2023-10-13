@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 
-import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
 import LoginContainer from 'src/components/UserLogin/LoginContainer';
@@ -43,20 +42,26 @@ const LoginPage = () => {
         height: '100%',
       }}
     >
-      <Box
+      <Grid
+        item
         className='body'
+        xs={6}
         sx={{
-          width: '50%',
           display: 'inline-grid',
           justifyContent: 'center',
           padding: '96px 0 0 0',
         }}
       >
         Main body information
-      </Box>
-      <Box className='sidebar' sx={{ width: '50%', justifyContent: 'center' }}>
+      </Grid>
+      <Grid
+        item
+        className='sidebar'
+        xs={6}
+        sx={{ justifyContent: 'center', padding: '1rem 4rem 4rem 4rem' }}
+      >
         <LoginContainer handleLogin={handleLogin} />
-      </Box>
+      </Grid>
     </Grid>
   );
 };

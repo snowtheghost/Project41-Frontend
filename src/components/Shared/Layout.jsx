@@ -9,12 +9,10 @@ const Layout = ({ children }) => {
   const navigate = useNavigate();
 
   return (
-    <div style={{ height: 'inherit' }}>
+    <div>
       {/* Other layout content */}
+      <Header title={'Project 41'} />
       {isLoggedIn() && <LogoutButton navigate={navigate} />}
-      <Link to='/' style={{ textDecoration: 'none' }}>
-        <Header title={'Project 41'} />
-      </Link>
       {isLoggedIn() && (
         <nav>
           <ul>
