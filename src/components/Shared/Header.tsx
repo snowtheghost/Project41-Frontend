@@ -16,7 +16,7 @@ const Header = (props: Props) => {
         backgroundColor: '#05004E',
         width: '100%',
         maxHeight: '10%',
-        padding: '1.5rem',
+        padding: '1.5rem 0',
       }}
     >
       <Link
@@ -27,6 +27,7 @@ const Header = (props: Props) => {
           fontSize: '1.1rem',
           fontWeight: 800,
           textDecoration: 'none',
+          margin: '0 1.5rem',
         }}
       >
         {title}
