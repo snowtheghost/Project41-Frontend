@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from '../../utils/axiosInstance'; // Import the axiosInstance
+import axios from '../../utils/axiosInstance';
 
 const HomePage = () => {
   const [userGames, setUserGames] = useState([]);
@@ -9,7 +9,7 @@ const HomePage = () => {
   const [capacity, setCapacity] = useState('');
   const [cost, setCost] = useState('');
   const [type, setType] = useState('');
-  const [state] = useState('PENDING_PLAYERS'); // Set state to PENDING_PLAYERS
+  const [state] = useState('PENDING_PLAYERS');
 
   const fetchUserData = async () => {
     try {
