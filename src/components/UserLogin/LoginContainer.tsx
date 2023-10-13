@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
+import { Tooltip } from '@mui/material';
 
 export type userType = 'Participant' | 'Researcher';
 
@@ -51,26 +52,29 @@ const LoginContainer = (props: Props) => {
             Participant
           </Button>
         </Grid>
-        <Grid className='Researcher-Button' item xs={6}>
-          <Button
-            onClick={() => setUserType('Researcher')}
-            sx={{
-              color: '#05004E',
-              backgroundColor: '#FF9F65',
-              fontWeight: 800,
-              width: '100%',
-              border: 3,
-              borderBottom: 0,
-              borderColor: userType === 'Researcher' ? '#05004E' : '#FF9F65',
-              borderTopLeftRadius: 12,
-              borderTopRightRadius: 12,
-              borderBottomLeftRadius: 0,
-              borderBottomRightRadius: 0,
-            }}
-          >
-            Researcher
-          </Button>
-        </Grid>
+        <Tooltip title='To be implemented' placement='top'>
+          <Grid className='Researcher-Button' item xs={6}>
+            <Button
+              disabled
+              onClick={() => setUserType('Researcher')}
+              sx={{
+                color: '#05004E',
+                backgroundColor: '#FF9F65',
+                fontWeight: 800,
+                width: '100%',
+                border: 3,
+                borderBottom: 0,
+                borderColor: userType === 'Researcher' ? '#05004E' : '#FF9F65',
+                borderTopLeftRadius: 12,
+                borderTopRightRadius: 12,
+                borderBottomLeftRadius: 0,
+                borderBottomRightRadius: 0,
+              }}
+            >
+              Researcher
+            </Button>
+          </Grid>
+        </Tooltip>
       </Grid>
       <Paper
         sx={{
