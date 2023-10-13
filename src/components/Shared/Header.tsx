@@ -13,7 +13,7 @@ const Header = (props: Props) => {
       sx={{
         backgroundColor: '#05004E',
         width: '100%',
-        minHeight: '40px',
+        minHeight: '10%',
       }}
     >
       <Typography
