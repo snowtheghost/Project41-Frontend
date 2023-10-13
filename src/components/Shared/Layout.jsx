@@ -1,5 +1,7 @@
-import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+
+import Header from 'src/components/Shared/Header';
+
 import { isLoggedIn } from '../../utils/auth';
 import LogoutButton from '../UserLogin/LogoutButton';
 
@@ -9,20 +11,18 @@ const Layout = ({ children }) => {
   return (
     <div>
       {/* Other layout content */}
+      <Header title={'Project 41'} />
       {isLoggedIn() && <LogoutButton navigate={navigate} />}
-      <nav>
-        <ul>
-          <li>
-            <Link to='/'>Home</Link>
-          </li>
-          {isLoggedIn() && (
+      {isLoggedIn() && (
+        <nav>
+          <ul>
             <li>
               <Link to='/funds'>Funds</Link>
             </li>
-          )}
-        </ul>
-      </nav>
-      <div>{children}</div>
+          </ul>
+        </nav>
+      )}
+      <div style={{ height: '90%' }}>{children}</div>
     </div>
   );
 };
