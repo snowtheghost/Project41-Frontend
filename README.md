@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Preparation before start
-Make sure you have installed nodejs, npm, and mui packages on you machine.
+Make sure you have installed nodejs, npm, and mui packages on your machine.
 You can run the command lines below to install.
 
 ```
