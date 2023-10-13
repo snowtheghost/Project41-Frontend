@@ -9,23 +9,22 @@ const Layout = ({ children }) => {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div style={{ height: 'inherit' }}>
       {/* Other layout content */}
       {isLoggedIn() && <LogoutButton navigate={navigate} />}
-      <Header title={'Project 41'} />
-      <nav>
-        <ul>
-          <li>
-            <Link to='/'>Home</Link>
-          </li>
-          {isLoggedIn() && (
+      <Link to='/' style={{ textDecoration: 'none' }}>
+        <Header title={'Project 41'} />
+      </Link>
+      {isLoggedIn() && (
+        <nav>
+          <ul>
             <li>
               <Link to='/funds'>Funds</Link>
             </li>
-          )}
-        </ul>
-      </nav>
-      <div>{children}</div>
+          </ul>
+        </nav>
+      )}
+      <div style={{ height: '90%' }}>{children}</div>
     </div>
   );
 };

@@ -41,24 +41,38 @@ const LoginContainer = (props: Props) => {
           <Button
             onClick={() => setUserType('Participant')}
             sx={{
-              color: userType === 'Participant' ? '#FF0000' : '#05004E',
+              color: '#05004E',
               backgroundColor: '#76B39D',
-              width: '90%',
               fontWeight: 800,
+              width: '100%',
+              border: 3,
+              borderBottom: 0,
+              borderColor: userType === 'Participant' ? '#05004E' : '#76B39D',
+              borderTopLeftRadius: 12,
+              borderTopRightRadius: 12,
+              borderBottomLeftRadius: 0,
+              borderBottomRightRadius: 0,
+              justifySelf: 'end',
             }}
           >
             Participant
           </Button>
         </Grid>
-
         <Grid item xs={6}>
           <Button
             onClick={() => setUserType('Researcher')}
             sx={{
-              color: userType === 'Researcher' ? '#FF0000' : '#05004E',
+              color: '#05004E',
               backgroundColor: '#FF9F65',
-              width: '90%',
               fontWeight: 800,
+              width: '100%',
+              border: 3,
+              borderBottom: 0,
+              borderColor: userType === 'Researcher' ? '#05004E' : '#FF9F65',
+              borderTopLeftRadius: 12,
+              borderTopRightRadius: 12,
+              borderBottomLeftRadius: 0,
+              borderBottomRightRadius: 0,
             }}
           >
             Researcher
@@ -68,18 +82,25 @@ const LoginContainer = (props: Props) => {
       <Paper
         sx={{
           backgroundColor: '#05004E',
-          minHeight: '180px',
+          height: '100%',
           width: '400px',
           display: 'inline-block',
           justifyContent: 'center',
           padding: '24px 0 0 0',
+          borderRadius: 4,
+          borderTopLeftRadius: 0,
+          borderTopRightRadius: 0,
         }}
       >
-        <Grid container sx={{ justifyContent: 'center' }}>
+        <Grid container sx={{ justifyContent: 'center', width: '100%' }}>
           <form onSubmit={(e) => handleLogin(e, email, password, userType)}>
-            <Typography sx={{ color: '#EBA6A6', margin: '4px' }}>
-              Email:
-            </Typography>
+            <Grid item xs={6}>
+              <Typography
+                sx={{ color: '#EBA6A6', margin: '8px 4px', width: 'auto' }}
+              >
+                Email:
+              </Typography>
+            </Grid>
             <input
               type='email'
               value={email}
@@ -101,10 +122,11 @@ const LoginContainer = (props: Props) => {
               variant='contained'
               type='submit'
               sx={{
-                margin: '4px',
+                padding: '4px',
+                margin: '16px',
                 display: 'block',
                 backgroundColor: '#76B39D',
-                minWidth: '60%',
+                width: '70%',
                 fontWeight: 800,
               }}
             >
@@ -115,7 +137,7 @@ const LoginContainer = (props: Props) => {
 
         <Link
           component={RouterLink}
-          sx={{ color: '#EBA6A6', margin: '8px' }}
+          sx={{ color: '#EBA6A6', margin: '16px', padding: '8px' }}
           to='/register'
         >
           Don't have an account?
