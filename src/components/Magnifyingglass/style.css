@@ -1,0 +1,22 @@
+.magnifyingglass {
+    height: 28px;
+    position: relative;
+    width: 28px;
+  }
+  
+  .magnifyingglass .text-wrapper {
+    color: var(--label-colorslc-l-secondary);
+    font-family: "SF Pro Display-Medium", Helvetica;
+    font-size: 18px;
+    font-weight: 500;
+    height: 28px;
+    left: 0;
+    letter-spacing: 0;
+    line-height: 50px;
+    position: absolute;
+    text-align: center;
+    top: -1px;
+    white-space: nowrap;
+    width: 28px;
+  }
+  
