@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Preparation before start
+Make sure you have installed nodejs, npm, and mui packages on your machine.
+You can run the command lines below to install.
+
+```
+sudo apt update
+sudo apt install nodejs npm
+npm install @mui/material @emotion/react @emotion/styled
+```
+    
 ## Available Scripts
 
 In the project directory, you can run:
