@@ -12,6 +12,7 @@ import FundsPage from './pages/Home/FundsPage';
 import HomePage from './pages/Home/HomePage';
 import RegisterPage from './pages/UserLogin/RegisterPage';
 import LoginPage from './pages/UserLogin/LoginPage';
+import GameLibraryIndex from './pages/ParticipantView/GameLibrary/GameLibraryIndex';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path='/' element={<HomePage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/register' element={<RegisterPage />} />
+          <Route path='/gamelibrary' element={<GameLibraryIndex/>} />
           <Route
             path='/funds'
             element={

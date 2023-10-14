@@ -1,42 +1,12 @@
-import React from "react";
-import { Search } from "../../components/Search";
+import { Search } from "../../../components/Search/Search";
+import ParticipantSideMenu from "../../../components/ParticipantViewShared/ParticipantSideMenu"
 import "./style.css";
 
-export const Index = (): JSX.Element => {
+export const GameLibraryIndex = (): JSX.Element => {
   return (
     <div className="index">
+      <ParticipantSideMenu />
       <div className="div-2">
-        <div className="web-header">
-          <div className="text-wrapper-3">System Name</div>
-        </div>
-        <div className="overlap-group">
-          <div className="frame">
-            <div className="text-wrapper-4">Games</div>
-          </div>
-          <div className="div-wrapper">
-            <div className="text-wrapper-5">Play History</div>
-          </div>
-          <div className="frame-2">
-            <div className="text-wrapper-5">My Rewards</div>
-          </div>
-          <div className="frame-3">
-            <div className="text-wrapper-5">My Profile</div>
-          </div>
-          <div className="frame-4">
-            <div className="text-wrapper-5">Feedback</div>
-          </div>
-          <div className="frame-5">
-            <div className="text-wrapper-5">Setting</div>
-          </div>
-          <div className="overlap">
-            <div className="text-wrapper-6">Help</div>
-            <img
-              className="help-outline"
-              alt="Help outline"
-              src="https://cdn.animaapp.com/projects/6525c9c7ae793d4bd77375d5/releases/6525d03eae793d4bd77375dc/img/help-outline.svg"
-            />
-          </div>
-        </div>
         <Search
           className="search-instance"
           clearIcon={false}
@@ -88,4 +58,7 @@ export const Index = (): JSX.Element => {
       </div>
     </div>
   );
+
 };
+
+export default GameLibraryIndex;

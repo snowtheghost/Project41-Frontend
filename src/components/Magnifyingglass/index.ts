@@ -1,1 +1,0 @@
-export { Magnifyingglass } from "./Magnifyingglass";

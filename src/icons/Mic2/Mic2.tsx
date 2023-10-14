@@ -34,3 +34,5 @@ export const Mic2 = ({ className }: Props): JSX.Element => {
     </svg>
   );
 };
+
+export default Mic2;

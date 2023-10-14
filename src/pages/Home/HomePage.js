@@ -97,6 +97,9 @@ const HomePage = () => {
           <p>
             Already have an account? <Link to='/login'>Login</Link>
           </p>
+          <p>
+            Redirect to the Game Library <Link to='/gamelibrary'>Game Library</Link>
+          </p>
         </div>
       )}
       {userGames.length > 0 && (

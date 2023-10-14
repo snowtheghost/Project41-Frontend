@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Close } from "../../icons/Close";
-import { Mic2 } from "../../icons/Mic2";
-import { Magnifyingglass } from "../Magnifyingglass";
+import { Close } from "../../icons/Close/Close";
+import { Mic2 } from "../../icons/Mic2/Mic2";
+import { Magnifyingglass } from "../Magnifyingglass/Magnifyingglass";
 import "./style.css";
 
 interface Props {
@@ -101,3 +101,5 @@ Search.propTypes = {
   clearIcon: PropTypes.bool,
   text: PropTypes.string,
 };
+
+export default Search;

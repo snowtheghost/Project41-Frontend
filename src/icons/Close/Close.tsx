@@ -28,3 +28,5 @@ export const Close = ({ className }: Props): JSX.Element => {
     </svg>
   );
 };
+
+export default Close;
