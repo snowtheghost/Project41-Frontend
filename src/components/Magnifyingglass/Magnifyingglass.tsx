@@ -13,3 +13,5 @@ export const Magnifyingglass = ({ className, magnifyingglassClassName }: Props):
     </div>
   );
 };
+
+export default Magnifyingglass;
