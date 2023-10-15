@@ -10,22 +10,22 @@ export const ParticipantSideBarData = [
     },
     {
         title: 'Played',
-        path: '/gamelibrary/playhistory',
+        path: '/playhistory',
         icon: <FaIcons.FaHistory />
     },
     {
         title: 'Rewards',
-        path: '/gamelibrary/myrewards',
+        path: '/myrewards',
         icon: <FaIcons.FaMoneyCheckAlt />
     },
     {
         title: 'Profile',
-        path: '/gamelibrary/myprofile',
+        path: '/myprofile',
         icon: <FaIcons.FaUserCircle />
     },
     {
         title: 'Settings',
-        path: '/gamelibrary/settings',
+        path: '/settings',
         icon: <AntIcons.AiFillSetting />
     }
 ]
