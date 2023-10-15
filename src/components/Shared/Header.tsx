@@ -15,7 +15,7 @@ const Header = (props: Props) => {
       sx={{
         backgroundColor: '#05004E',
         width: '100%',
-        maxHeight: '10%',
+        Height: '10%',
         padding: '1.5rem 0',
       }}
     >
