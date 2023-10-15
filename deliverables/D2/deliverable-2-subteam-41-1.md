@@ -24,6 +24,8 @@ Though the current frontend is not at the level of the proof of concept, this re
 - Performed Code Reviews on various pull requests.
 - Performed code cleanups on files that were linted.
 - Wrote instructions on how to setup and run the codebase.
+- Added sidebar for participant view.
+- Structured screens for participant view.
 
 ### Setting up your repo
 
@@ -37,12 +39,24 @@ To verify our work, you can either run the codebase locally, or view the deploye
 - NPM
 - React 18
 
+##### Preparation before start
+Make sure you have installed node.js, npm, and mui packages on your machine.
+You can run the command lines below to install.
+
 ##### Local Setup
 
 1. Clone this repository to your local machine.
 2. Open the terminal and navigate to the project folder: `cd project41-frontend`
 3. Run `npm install` to install the necessary packages.
 4. Run `npm start` to start the frontend server locally.
+
+```
+sudo apt update
+sudo apt install nodejs npm
+npm install
+npm install @mui/material @emotion/react @emotion/styled  //(optional)
+npm start
+```
 
 ### Completed User Story
 
