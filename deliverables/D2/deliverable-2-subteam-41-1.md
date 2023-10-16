@@ -18,6 +18,7 @@ Though the current frontend is not at the level of the proof of concept, this re
 - Installed Typescript, React Query, Jest, and MUI into the codebase.
 - Added Header bar for the website.
 - Added UI components for the Login Screen.
+- Added the Tic-tac-toe and Prisoner's Dilemma Interface.
 
 #### Evelyn's Contributions
 
@@ -29,7 +30,7 @@ Though the current frontend is not at the level of the proof of concept, this re
 
 ### Setting up your repo
 
-To verify our work, you can either run the codebase locally, or view the deployed website.
+To verify our work, you can either run the codebase locally, or view the deployed [website](https://main.dekaw19mhqaqy.amplifyapp.com/).
 
 #### Running the codebase locally
 
@@ -40,6 +41,7 @@ To verify our work, you can either run the codebase locally, or view the deploye
 - React 18
 
 ##### Preparation before start
+
 Make sure you have installed node.js, npm, and mui packages on your machine.
 You can run the command lines below to install.
 
@@ -58,6 +60,7 @@ npm install @mui/material @emotion/react @emotion/styled  //(optional)
 npm start
 ```
 
-### Completed User Story
+### Completed User Stories
 
 As a user, I can register or log into the website.
+As a user, I can access a tic-tac-toe or Prisoner's Dilemma game, playing one round against the
