@@ -125,7 +125,7 @@ const PrisonersDilemmaLoader = () => {
 
   useEffect(() => {
     startGame();
-  });
+  }, []);
 
   return (
     <Box>
