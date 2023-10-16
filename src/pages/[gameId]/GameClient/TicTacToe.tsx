@@ -64,7 +64,8 @@ const TicTacToe = () => {
   const fetchMove = async (move: string) => {
     try {
       await axios.post(`/games/move?=${move}`).then(({ data }) => {
-        board[Number(data[0])][Number(data[1])] = 'O';
+        console.log(data);
+        board[parseInt(data[0])][parseInt(data[1])] = 'O';
         if (isWinner('O')) {
           setIsGameComplete(true);
           endGame();
@@ -229,7 +230,7 @@ const TicTacToeLoader = () => {
 
   useEffect(() => {
     startGame();
-  });
+  }, []);
 
   return (
     <Box>
