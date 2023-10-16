@@ -17,9 +17,9 @@ const TicTacToe = () => {
   const [isGameComplete, setIsGameComplete] = useState(false);
 
   const [board, setBoard] = useState([
-    ['', '', ''],
-    ['', '', ''],
-    ['', '', ''],
+    [' ', ' ', ' '],
+    [' ', ' ', ' '],
+    [' ', ' ', ' '],
   ]);
 
   // THIS IS RUSHED
@@ -68,7 +68,6 @@ const TicTacToe = () => {
         setIsGameComplete(data.gameState.game_over);
         setBoard(data.gameState.board);
         if (isGameComplete) {
-          setIsGameComplete(true);
           endGame();
         }
       });
@@ -104,7 +103,6 @@ const TicTacToe = () => {
     };
   }, []);
 
-  console.log(board, canAct, isGameComplete);
   return (
     <Box>
       <Typography variant={'h4'} sx={{ m: '1.5rem', fontWeight: 800 }}>
@@ -135,21 +133,21 @@ const TicTacToe = () => {
       <Grid container sx={{ m: 2 }}>
         <Grid item xs={6}>
           <Button
-            disabled={!canAct || isGameComplete || board[0][0] !== ''}
+            disabled={!canAct || isGameComplete || board[0][0] !== ' '}
             onClick={() => handleClick('00')}
             sx={{ border: 1, minHeight: '3rem' }}
           >
             {board[0][0]}
           </Button>
           <Button
-            disabled={!canAct || isGameComplete || board[0][1] !== ''}
+            disabled={!canAct || isGameComplete || board[0][1] !== ' '}
             onClick={() => handleClick('01')}
             sx={{ border: 1, minHeight: '3rem' }}
           >
             {board[0][1]}
           </Button>
           <Button
-            disabled={!canAct || isGameComplete || board[0][2] !== ''}
+            disabled={!canAct || isGameComplete || board[0][2] !== ' '}
             onClick={() => handleClick('02')}
             sx={{ border: 1, minHeight: '3rem' }}
           >
@@ -158,21 +156,21 @@ const TicTacToe = () => {
         </Grid>
         <Grid item xs={7}>
           <Button
-            disabled={!canAct || isGameComplete || board[1][0] !== ''}
+            disabled={!canAct || isGameComplete || board[1][0] !== ' '}
             onClick={() => handleClick('10')}
             sx={{ border: 1, minHeight: '3rem' }}
           >
             {board[1][0]}
           </Button>
           <Button
-            disabled={!canAct || isGameComplete || board[1][1] !== ''}
+            disabled={!canAct || isGameComplete || board[1][1] !== ' '}
             onClick={() => handleClick('11')}
             sx={{ border: 1, minHeight: '3rem' }}
           >
             {board[1][1]}
           </Button>
           <Button
-            disabled={!canAct || isGameComplete || board[1][2] !== ''}
+            disabled={!canAct || isGameComplete || board[1][2] !== ' '}
             onClick={() => handleClick('12')}
             sx={{ border: 1, minHeight: '3rem' }}
           >
@@ -181,21 +179,21 @@ const TicTacToe = () => {
         </Grid>
         <Grid item xs={6}>
           <Button
-            disabled={!canAct || isGameComplete || board[2][0] !== ''}
+            disabled={!canAct || isGameComplete || board[2][0] !== ' '}
             onClick={() => handleClick('20')}
             sx={{ border: 1, minHeight: '3rem' }}
           >
             {board[2][0]}
           </Button>
           <Button
-            disabled={!canAct || isGameComplete || board[2][1] !== ''}
+            disabled={!canAct || isGameComplete || board[2][1] !== ' '}
             onClick={() => handleClick('21')}
             sx={{ border: 1, minHeight: '3rem' }}
           >
             {board[2][1]}
           </Button>
           <Button
-            disabled={!canAct || isGameComplete || board[2][2] !== ''}
+            disabled={!canAct || isGameComplete || board[2][2] !== ' '}
             onClick={() => handleClick('22')}
             sx={{ border: 1, minHeight: '3rem' }}
           >
