@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -8,6 +7,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 import FullPageSpinner from 'src/components/Shared/FullPageSpinner';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
+
+import axios from 'src/utils/axiosInstance';
 
 const PrisonersDilemma = () => {
   const [canAct, setCanAct] = useState(true);

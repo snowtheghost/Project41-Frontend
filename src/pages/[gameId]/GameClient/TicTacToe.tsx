@@ -1,15 +1,15 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
-
-import FullPageSpinner from 'src/components/Shared/FullPageSpinner';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import CircularProgress from '@mui/material/CircularProgress';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
+
+import axios from 'src/utils/axiosInstance';
+import FullPageSpinner from 'src/components/Shared/FullPageSpinner';
 
 const TicTacToe = () => {
   const [canAct, setCanAct] = useState(true);
@@ -17,7 +17,7 @@ const TicTacToe = () => {
   const [isGameComplete, setIsGameComplete] = useState(false);
 
   let board = [
-    ['', '', ''],
+    ['X', 'X', ''],
     ['', '', ''],
     ['', '', ''],
   ];
