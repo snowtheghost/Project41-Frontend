@@ -16,31 +16,43 @@ import GameLibraryIndex from './pages/ParticipantView/GameLibrary/GameLibraryInd
 import PlayHistory from './pages/ParticipantView/PlayHistory/PlayHistory';
 import Rewards from './pages/ParticipantView/Rewards/Rewards';
 import Profile from './pages/ParticipantView/Profile/Profile';
+import TicTacToe from './pages/[gameId]/GameClient/TicTacToe';
+import PrisonersDilemma from './pages/[gameId]/GameClient/PrisonersDilemma';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 const App = () => {
+  const queryClient = new QueryClient();
+
   return (
-    <Router>
-      <Layout>
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/login' element={<LoginPage />} />
-          <Route path='/register' element={<RegisterPage />} />
-          <Route path='/gamelibrary' element={<GameLibraryIndex/>} />
-          <Route path='/playhistory' element={<PlayHistory/>} />
-          <Route path='/myrewards' element={<Rewards/>} />
-          <Route path='/myprofile' element={<Profile/>} />
-          <Route
-            path='/funds'
-            element={
-              <ProtectedRoute>
-                <FundsPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route path='*' element={<Navigate to='/' />} />
-        </Routes>
-      </Layout>
-    </Router>
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <Layout>
+          <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/register' element={<RegisterPage />} />
+            <Route path='/gamelibrary' element={<GameLibraryIndex />} />
+            <Route path='/playhistory' element={<PlayHistory />} />
+            <Route path='/myrewards' element={<Rewards />} />
+            <Route path='/myprofile' element={<Profile />} />
+            <Route
+              path='/games/prisonersdilemma'
+              element={<PrisonersDilemma />}
+            />
+            <Route path='/games/tictactoe' element={<TicTacToe />} />
+            <Route
+              path='/funds'
+              element={
+                <ProtectedRoute>
+                  <FundsPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route path='*' element={<Navigate to='/' />} />
+          </Routes>
+        </Layout>
+      </Router>
+    </QueryClientProvider>
   );
 };
 
