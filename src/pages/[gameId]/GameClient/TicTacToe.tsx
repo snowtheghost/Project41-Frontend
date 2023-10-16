@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../../utils/axiosInstance';
 import { useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
