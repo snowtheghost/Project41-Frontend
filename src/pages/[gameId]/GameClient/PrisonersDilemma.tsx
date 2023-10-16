@@ -18,7 +18,7 @@ const PrisonersDilemma = () => {
 
   const fetchMove = async (move: string) => {
     try {
-      await axios.post(`/games/move?=${move}`).then(({ data }) => {
+      await axios.post(`/games/move?move=${move}`).then(({ data }) => {
         setOpponentChoice(data);
         setCanAct(true);
       });
