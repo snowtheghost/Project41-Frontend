@@ -63,7 +63,7 @@ const TicTacToe = () => {
 
   const fetchMove = async (move: string) => {
     try {
-      await axios.post(`/games/move?=${move}`).then(({ data }) => {
+      await axios.post(`/games/move?move=${move}`).then(({ data }) => {
         console.log(data);
         board[parseInt(data[0])][parseInt(data[1])] = 'O';
         if (isWinner('O')) {
