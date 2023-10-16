@@ -17,7 +17,7 @@ const TicTacToe = () => {
   const [isGameComplete, setIsGameComplete] = useState(false);
 
   let board = [
-    ['X', 'X', ''],
+    ['', '', ''],
     ['', '', ''],
     ['', '', ''],
   ];
