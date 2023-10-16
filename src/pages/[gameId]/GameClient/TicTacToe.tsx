@@ -69,8 +69,6 @@ const TicTacToe = () => {
         if (isGameComplete) {
           setIsGameComplete(true);
           endGame();
-        } else {
-          setCanAct(true);
         }
       });
     } catch (error) {
@@ -93,6 +91,7 @@ const TicTacToe = () => {
       setIsGameComplete(true);
     }
     fetchMove(move);
+    setCanAct(true);
   };
 
   useEffect(() => {
