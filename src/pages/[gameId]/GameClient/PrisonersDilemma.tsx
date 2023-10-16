@@ -13,14 +13,16 @@ import axios from 'src/utils/axiosInstance';
 const PrisonersDilemma = () => {
   const [canAct, setCanAct] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [playerChoice, setPlayerChoice] = useState('');
-  const [opponentChoice, setOpponentChoice] = useState('');
+  const [gameOver, setGameOver] = useState(false);
+  const [playerPayout, setPlayerPayout] = useState(0);
+  const [opponentPayout, setOpponentPayout] = useState(0);
 
   const fetchMove = async (move: string) => {
     try {
       await axios.post(`/games/move?move=${move}`).then(({ data }) => {
-        setOpponentChoice(data);
-        setCanAct(true);
+        setPlayerPayout(data.gameState.payoff1);
+        setOpponentPayout(data.gameState.payoff2);
+        setGameOver(data.gameState.game_over);
       });
     } catch (error) {
       console.error(error);
@@ -37,7 +39,6 @@ const PrisonersDilemma = () => {
   };
 
   const handleClick = (move: string) => {
-    setPlayerChoice(move);
     setCanAct(false);
     fetchMove(move);
   };
@@ -60,14 +61,14 @@ const PrisonersDilemma = () => {
       <Typography variant={'h4'} sx={{ m: '1.5rem', fontWeight: 800 }}>
         Prisoner's Dilemma
       </Typography>
-      {playerChoice && opponentChoice ? (
+      {gameOver ? (
         <Box>
           <Typography>Results:</Typography>
-          {playerChoice === 'C' && opponentChoice === 'C' ? (
+          {playerPayout === 4 && opponentPayout === 4 ? (
             <Typography>Both parties cooperated</Typography>
-          ) : playerChoice === 'C' && opponentChoice === 'D' ? (
+          ) : playerPayout === 2 && opponentPayout === 5 ? (
             <Typography>You got betrayed!</Typography>
-          ) : playerChoice === 'D' && opponentChoice === 'C' ? (
+          ) : playerPayout === 5 && opponentPayout === 2 ? (
             <Typography>You successfully betrayed the opponent!</Typography>
           ) : (
             <Typography>Both parties defected</Typography>
