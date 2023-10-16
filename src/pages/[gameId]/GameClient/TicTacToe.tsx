@@ -17,7 +17,7 @@ const TicTacToe = () => {
   const [isGameComplete, setIsGameComplete] = useState(false);
 
   let board = [
-    ['X', 'X', ''],
+    ['', '', ''],
     ['', '', ''],
     ['', '', ''],
   ];
@@ -217,7 +217,9 @@ const TicTacToeLoader = () => {
   const startGame = async () => {
     try {
       await axios
-        .post('games/start?gameType=tictactoe&player1_type=real&player2_type=minimax')
+        .post(
+          '/games/start?gameType=tictactoe&player1_type=real&player2_type=minimax'
+        )
         .then(() => {
           setIsLoading(false);
         });
