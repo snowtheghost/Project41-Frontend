@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -28,11 +28,32 @@ const PrisonersDilemma = () => {
     }
   };
 
+  const endGame = async () => {
+    try {
+      await axios.post(`/games/quit`);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const handleClick = (move: string) => {
     setPlayerChoice(move);
     setCanAct(false);
     fetchMove(move);
   };
+
+  useEffect(() => {
+    const handleBeforeUnload = (event: any) => {
+      // Perform actions before the component unloads
+      event.preventDefault();
+      event.returnValue = '';
+      endGame();
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
 
   return (
     <Box>
