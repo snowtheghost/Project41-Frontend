@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useQuery } from 'react-query';
 import { Link as RouterLink } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
@@ -105,21 +104,40 @@ const PrisonersDilemma = () => {
 };
 
 const PrisonersDilemmaLoader = () => {
-  const { isLoading, error } = useQuery('game', () =>
-    fetch(
-      'https://project41301.onrender.com/games/start?gameType=prisoners_dilemma&player1_type=real&player2_type=minimax'
-    ).then((res) => res.json())
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+
+  const startGame = async () => {
+    try {
+      await axios
+        .post(
+          'start?gameType=prisoners_dilemma&player1_type=real&player2_type=minimax'
+        )
+        .then(() => {
+          setIsLoading(false);
+        });
+    } catch (error) {
+      setIsLoading(false);
+      setIsError(true);
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    startGame();
+  });
+
+  return (
+    <Box>
+      {isLoading ? (
+        <FullPageSpinner />
+      ) : isError ? (
+        <p>An error has occurred</p>
+      ) : (
+        <PrisonersDilemma />
+      )}
+    </Box>
   );
-
-  if (isLoading) {
-    return <FullPageSpinner />;
-  }
-
-  if (error) {
-    return <p>An error has occurred</p>;
-  }
-
-  return <PrisonersDilemma />;
 };
 
 export default PrisonersDilemmaLoader;
