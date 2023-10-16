@@ -64,14 +64,13 @@ const TicTacToe = () => {
   const fetchMove = async (move: string) => {
     try {
       await axios.post(`/games/move?move=${move}`).then(({ data }) => {
-        setBoard(data.gameState.board);
+        setCanAct(true);
         setIsGameComplete(data.gameState.game_over);
+        setBoard(data.gameState.board);
         if (isGameComplete) {
           setIsGameComplete(true);
           endGame();
         }
-
-        setCanAct(true);
       });
     } catch (error) {
       console.error(error);
