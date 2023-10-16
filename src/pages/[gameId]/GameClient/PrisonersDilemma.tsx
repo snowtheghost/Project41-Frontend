@@ -112,7 +112,7 @@ const PrisonersDilemmaLoader = () => {
     try {
       await axios
         .post(
-          'start?gameType=prisoners_dilemma&player1_type=real&player2_type=minimax'
+          '/games/start?gameType=prisoners_dilemma&player1_type=real&player2_type=minimax'
         )
         .then(() => {
           setIsLoading(false);
