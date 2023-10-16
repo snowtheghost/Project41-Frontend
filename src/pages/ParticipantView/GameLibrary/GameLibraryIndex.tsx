@@ -1,11 +1,13 @@
-import "./style.css";
-import ParticipantSideBar from "../../../components/ParticipantViewShared/ParticipantSideBar";
+import Box from '@mui/material/Box';
+
+import './style.css';
+import ParticipantSideBar from '../../../components/ParticipantViewShared/ParticipantSideBar';
 
 const GameLibraryIndex = () => {
   return (
-    <div style={{ backgroundColor: '#F9F8EB', minHeight: '100vh', width: '100%' }}>
-    {<ParticipantSideBar />}
-    </div>
+    <Box sx={{ backgroundColor: '#F9F8EB', minHeight: '100vh', width: '100%' }}>
+      {<ParticipantSideBar />}
+    </Box>
   );
 };
 
