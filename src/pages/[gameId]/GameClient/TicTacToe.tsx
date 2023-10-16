@@ -16,11 +16,11 @@ const TicTacToe = () => {
   const [isError, setIsError] = useState(false);
   const [isGameComplete, setIsGameComplete] = useState(false);
 
-  let board = [
+  const [board, setBoard] = useState([
     ['', '', ''],
     ['', '', ''],
     ['', '', ''],
-  ];
+  ]);
 
   // THIS IS RUSHED
   const isWinner = (player: string) => {
@@ -64,8 +64,7 @@ const TicTacToe = () => {
   const fetchMove = async (move: string) => {
     try {
       await axios.post(`/games/move?move=${move}`).then(({ data }) => {
-        console.log(data);
-        board = data.gameState.board;
+        setBoard(data.gameState.board);
         setIsGameComplete(data.gameState.game_over);
         if (isGameComplete) {
           setIsGameComplete(true);
@@ -109,6 +108,7 @@ const TicTacToe = () => {
     };
   }, []);
 
+  console.log(board);
   return (
     <Box>
       <Typography variant={'h4'} sx={{ m: '1.5rem', fontWeight: 800 }}>
