@@ -1,12 +1,22 @@
 import Box from '@mui/material/Box';
 
-import './style.css';
 import ParticipantSideBar from '../../../components/ParticipantViewShared/ParticipantSideBar';
+import GamesList from 'src/components/Home/GamesList';
 
 const GameLibraryIndex = () => {
   return (
-    <Box sx={{ backgroundColor: '#F9F8EB', minHeight: '100vh', width: '100%' }}>
-      {<ParticipantSideBar />}
+    <Box
+      sx={{
+        display: 'inline-flex',
+        backgroundColor: '#F9F8EB',
+        width: '100%',
+        height: '100vh',
+      }}
+    >
+
+      <ParticipantSideBar />
+      <GamesList />
+
     </Box>
   );
 };
