@@ -27,6 +27,7 @@ import DataRequest from './pages/ResearcherView/DataRequest';
 import SendRewards from './pages/ResearcherView/SendRewards';
 import ResearcherFeedback from './pages/ResearcherView/ResearcherFeedback';
 import ParticipantFeedback from './pages/ParticipantView/ParticipantFeedback';
+import Settings from './pages/ParticipantView/Settings';
 
 const App = () => {
   const queryClient = new QueryClient();
@@ -43,6 +44,7 @@ const App = () => {
             <Route path='/playhistory' element={<PlayHistory />} />
             <Route path='/myrewards' element={<Rewards />} />
             <Route path='/myprofile' element={<Profile />} />
+            <Route path='/settings' element={<Settings />} />
             <Route path='/participant/feedback' element={<ParticipantFeedback />} />
             <Route path='/myresearch' element={<MyResearch />} />
             <Route path='/othersresearch' element={<OthersResearch />} />
