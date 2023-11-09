@@ -81,7 +81,7 @@ const GamesList = (props: Props) => {
   );
   
   return (
-    <Box>
+    <Box sx={{width: '100%'}}>
       <Search>
         <SearchIconWrapper>
           <IconButton aria-label="search">
@@ -97,7 +97,7 @@ const GamesList = (props: Props) => {
       <TitleContainer>
         <h2>Active Games:</h2>
       </TitleContainer>
-      <Grid container rowSpacing={3} sx={{ pl: '20px', width: '100%', justifyContent: 'flex-start', alignItems: 'stretch' }}>
+      <Grid container rowSpacing={3} sx={{ pl: '20px', width: '100%'}}>
         {filteredGames.length > 0 ? (
           filteredGames.map((game, index) => (
             <Grid item key={index}>
