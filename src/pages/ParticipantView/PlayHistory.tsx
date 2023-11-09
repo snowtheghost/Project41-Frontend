@@ -1,4 +1,4 @@
-import ParticipantSideBar from "../../../components/ParticipantViewShared/ParticipantSideBar";
+import ParticipantSideBar from "../../components/ParticipantViewShared/ParticipantSideBar";
 
 const PlayHistory = () => {
   return (
