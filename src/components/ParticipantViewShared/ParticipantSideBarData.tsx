@@ -1,4 +1,3 @@
-import React from 'react'
 import * as FaIcons from 'react-icons/fa' 
 import * as AntIcons from 'react-icons/ai';
 
@@ -9,17 +8,17 @@ export const ParticipantSideBarData = [
         icon: <FaIcons.FaGamepad />
     },
     {
-        title: 'Played',
+        title: 'Play History',
         path: '/playhistory',
         icon: <FaIcons.FaHistory />
     },
     {
-        title: 'Rewards',
+        title: 'My Rewards',
         path: '/myrewards',
         icon: <FaIcons.FaMoneyCheckAlt />
     },
     {
-        title: 'Profile',
+        title: 'My Profile',
         path: '/myprofile',
         icon: <FaIcons.FaUserCircle />
     },
@@ -27,5 +26,10 @@ export const ParticipantSideBarData = [
         title: 'Settings',
         path: '/settings',
         icon: <AntIcons.AiFillSetting />
+    },
+    {
+        title: 'Feedback',
+        path: '/participant/feedback',
+        icon: <FaIcons.FaCommentDots />
     }
 ]

@@ -1,6 +1,6 @@
 import ResearcherSideBar from "src/components/ResearcherViewShared/ResearcherSideBar";
 
-const MyResearch = () => {
+const ResearcherFeedback = () => {
     return (
       <div style={{ backgroundColor: '#F9F8EB', minHeight: '100vh', width: '100%' }}>
         {<ResearcherSideBar />}
@@ -8,5 +8,5 @@ const MyResearch = () => {
     );
   };
   
-  export default MyResearch;
+  export default ResearcherFeedback;
   
