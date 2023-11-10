@@ -9,7 +9,7 @@ export const GameSideBarData = [
     },
     {
         title: 'Information',
-        path: '/:gameId/Information',
+        path: '/:gameId/information',
         icon: <FaIcons.FaInfoCircle />
     },
     {

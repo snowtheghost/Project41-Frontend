@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { GameSideBarData } from './GameSideBarData';
@@ -19,46 +19,49 @@ const MenuItems = styled.li`
     align-items: center;
     justify-content: start;
     width: 100%;
-    height: 90px;
-    padding: 1rem 0 1.25rem;
+    padding: 0; /* Increased top padding to 2rem */
 `
 
-const MenuItemLinks = styled(Link)`
+const MenuItemLinks = styled(Link)<{isActive: boolean}>`
+    background-color: ${(props) => props.isActive ? '#f9f8eb' : '#05004e'};
+    color: ${(props) => props.isActive ? '#05004e' : '#f9f8eb'};
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    border-radius: 5px;
+    margin: 0 1rem;
+    margin-top: 2.5rem;
     display: flex;
     align-items: center;
-    padding: 0 2rem;
-    font-size: 20px;
+    padding: 0 1rem;
+    font-size: 18px;
+    font-weight: 450;
     text-decoration: none;
-    color: #f9f8eb;
+
     &:hover {
         background-color: #f9f8eb;
         color: #05004e;
-        width: 100%;
-        height: 45px;
-        text-align: center;
-        border-radius: 5px;
-        margin: 0 2rem;
     }
-`
+`;
 
 const GameSideBar: React.FunctionComponent = () => {
-    return (
-        <>
-            <SidebarMenu>
+    const location = useLocation();
 
-                {GameSideBarData.map((item, index) => {
-                    return (
-                        <MenuItems key={index}>
-                            <MenuItemLinks to={item.path}>
-                                {item.icon}
-                                <span style={{marginLeft: '16px'}}>{item.title}</span>
-                            </MenuItemLinks>
-                        </MenuItems>
-                    )
-                })}
-            </SidebarMenu>
-        </>
-    )
-}
+    return (
+        <SidebarMenu>
+            {GameSideBarData.map((item, index) => {
+                const isActive = location.pathname === item.path;
+                return (
+                    <MenuItems key={index}>
+                        <MenuItemLinks to={item.path} isActive={isActive}>
+                            {item.icon}
+                            <span style={{ marginLeft: '16px' }}>{item.title}</span>
+                        </MenuItemLinks>
+                    </MenuItems>
+                );
+            })}
+        </SidebarMenu>
+    );
+};
 
 export default GameSideBar

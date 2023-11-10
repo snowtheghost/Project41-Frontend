@@ -28,6 +28,10 @@ import SendRewards from './pages/ResearcherView/SendRewards';
 import ResearcherFeedback from './pages/ResearcherView/ResearcherFeedback';
 import ParticipantFeedback from './pages/ParticipantView/ParticipantFeedback';
 import Settings from './pages/ParticipantView/Settings';
+import GameHomePage from './pages/ParticipantView/GamePages/GameHomePage';
+import GameFeedback from './pages/ParticipantView/GamePages/GameFeedback';
+import GameConsent from './pages/ParticipantView/GamePages/Consent';
+import GameInformation from './pages/ParticipantView/GamePages/GameInformation';
 
 const App = () => {
   const queryClient = new QueryClient();
@@ -51,6 +55,10 @@ const App = () => {
             <Route path='/datarequest' element={<DataRequest />} />
             <Route path='/sendrewards' element={<SendRewards />} />
             <Route path='/researcher/feedback' element={<ResearcherFeedback />} />
+            <Route path='/:gameId/home' element={<GameHomePage />} />
+            <Route path='/:gameId/information' element={<GameInformation />} />
+            <Route path='/:gameId/consent' element={<GameConsent />} />
+            <Route path='/:gameId/feedback' element={<GameFeedback />} />
             <Route
               path='/games/prisonersdilemma'
               element={<PrisonersDilemma />}
