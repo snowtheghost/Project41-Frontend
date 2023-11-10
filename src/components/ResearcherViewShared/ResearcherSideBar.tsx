@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { ParticipantSideBarData } from './ParticipantSideBarData';
+import { ResearcherSideBarData } from './ResearcherSideBarData';
 
 const SidebarMenu = styled.div`
     min-width: 250px;
@@ -44,12 +44,12 @@ const MenuItemLinks = styled(Link)<{isActive: boolean}>`
     }
 `;
 
-const ParticipantSideBar: React.FunctionComponent = () => {
+const ResearcherSideBar: React.FunctionComponent = () => {
     const location = useLocation();
 
     return (
         <SidebarMenu>
-            {ParticipantSideBarData.map((item, index) => {
+            {ResearcherSideBarData.map((item, index) => {
                 const isActive = location.pathname === item.path;
                 return (
                     <MenuItems key={index}>
@@ -64,4 +64,4 @@ const ParticipantSideBar: React.FunctionComponent = () => {
     );
 };
 
-export default ParticipantSideBar
+export default ResearcherSideBar

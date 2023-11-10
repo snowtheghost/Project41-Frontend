@@ -18,7 +18,16 @@ import Rewards from './pages/ParticipantView/Rewards/Rewards';
 import Profile from './pages/ParticipantView/Profile/Profile';
 import TicTacToe from './pages/[gameId]/GameClient/TicTacToe';
 import PrisonersDilemma from './pages/[gameId]/GameClient/PrisonersDilemma';
+import Trust from './pages/[gameId]/GameClient/Trust';
+import Ultimatum from './pages/[gameId]/GameClient/Ultimatum';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import MyResearch from './pages/ResearcherView/MyResearch';
+import OthersResearch from './pages/ResearcherView/OthersResearch';
+import DataRequest from './pages/ResearcherView/DataRequest';
+import SendRewards from './pages/ResearcherView/SendRewards';
+import ResearcherFeedback from './pages/ResearcherView/ResearcherFeedback';
+import ParticipantFeedback from './pages/ParticipantView/ParticipantFeedback';
+import Settings from './pages/ParticipantView/Settings';
 
 const App = () => {
   const queryClient = new QueryClient();
@@ -35,11 +44,20 @@ const App = () => {
             <Route path='/playhistory' element={<PlayHistory />} />
             <Route path='/myrewards' element={<Rewards />} />
             <Route path='/myprofile' element={<Profile />} />
+            <Route path='/settings' element={<Settings />} />
+            <Route path='/participant/feedback' element={<ParticipantFeedback />} />
+            <Route path='/myresearch' element={<MyResearch />} />
+            <Route path='/othersresearch' element={<OthersResearch />} />
+            <Route path='/datarequest' element={<DataRequest />} />
+            <Route path='/sendrewards' element={<SendRewards />} />
+            <Route path='/researcher/feedback' element={<ResearcherFeedback />} />
             <Route
               path='/games/prisonersdilemma'
               element={<PrisonersDilemma />}
             />
             <Route path='/games/tictactoe' element={<TicTacToe />} />
+            <Route path='/games/trust' element={<Trust />} />
+            <Route path='/games/ultimatum' element={<Ultimatum />} />
             <Route
               path='/funds'
               element={
