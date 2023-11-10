@@ -1,10 +1,23 @@
+import GamesList from "src/components/Home/GamesList";
 import ParticipantSideBar from "../../components/ParticipantViewShared/ParticipantSideBar";
+import Box from "@mui/material/Box";
 
 const PlayHistory = () => {
   return (
-    <div style={{ backgroundColor: '#F9F8EB', minHeight: '100vh', width: '100%' }}>
-    {<ParticipantSideBar />}
-    </div>
+    <Box
+      sx={{
+        display: 'inline-flex',
+        backgroundColor: '#F9F8EB',
+        width: '100%',
+        height: '100vh',
+      }}
+    >
+
+      <ParticipantSideBar />
+      {/* // TODO: add games={gamesData} for play history games */}
+      <GamesList /> 
+
+    </Box>
   );
 };
 
