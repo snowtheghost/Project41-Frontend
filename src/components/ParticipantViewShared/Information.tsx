@@ -1,9 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const OuterContainer = styled.div`
-`;
-
 const ConsentContainer = styled.div`
     padding: 0 20px;
     width: 94%;
@@ -65,7 +62,7 @@ const InfoSection: React.FC<InfoSectionProps> = ({ title, children }) => (
 
 const Information = () => {
   return (
-    <OuterContainer>
+    <div>
         <ConsentContainer>
             <ConsentTitle>Information</ConsentTitle>
             <ConsentText> 
@@ -150,7 +147,7 @@ const Information = () => {
                 </InfoSection>
             </ConsentText>
         </ConsentContainer>
-    </OuterContainer>
+    </div>
   );
 };
 
