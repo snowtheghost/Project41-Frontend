@@ -12,10 +12,10 @@ import FundsPage from './pages/Home/FundsPage';
 import HomePage from './pages/Home/HomePage';
 import RegisterPage from './pages/UserLogin/RegisterPage';
 import LoginPage from './pages/UserLogin/LoginPage';
-import GameLibraryIndex from './pages/ParticipantView/GameLibrary/GameLibraryIndex';
-import PlayHistory from './pages/ParticipantView/PlayHistory/PlayHistory';
-import Rewards from './pages/ParticipantView/Rewards/Rewards';
-import Profile from './pages/ParticipantView/Profile/Profile';
+import GameLibraryIndex from './pages/ParticipantView/GameLibraryIndex';
+import PlayHistory from './pages/ParticipantView/PlayHistory';
+import Rewards from './pages/ParticipantView/Rewards';
+import Profile from './pages/ParticipantView/Profile';
 import TicTacToe from './pages/[gameId]/GameClient/TicTacToe';
 import PrisonersDilemma from './pages/[gameId]/GameClient/PrisonersDilemma';
 import Trust from './pages/[gameId]/GameClient/Trust';
@@ -28,6 +28,10 @@ import SendRewards from './pages/ResearcherView/SendRewards';
 import ResearcherFeedback from './pages/ResearcherView/ResearcherFeedback';
 import ParticipantFeedback from './pages/ParticipantView/ParticipantFeedback';
 import Settings from './pages/ParticipantView/Settings';
+import GameHomePage from './pages/ParticipantView/GamePages/GameHomePage';
+import GameFeedback from './pages/ParticipantView/GamePages/GameFeedback';
+import GameConsent from './pages/ParticipantView/GamePages/Consent';
+import GameInformation from './pages/ParticipantView/GamePages/GameInformation';
 
 const App = () => {
   const queryClient = new QueryClient();
@@ -51,6 +55,10 @@ const App = () => {
             <Route path='/datarequest' element={<DataRequest />} />
             <Route path='/sendrewards' element={<SendRewards />} />
             <Route path='/researcher/feedback' element={<ResearcherFeedback />} />
+            <Route path='/:gameId/home' element={<GameHomePage />} />
+            <Route path='/:gameId/information' element={<GameInformation />} />
+            <Route path='/:gameId/consent' element={<GameConsent />} />
+            <Route path='/:gameId/feedback' element={<GameFeedback />} />
             <Route
               path='/games/prisonersdilemma'
               element={<PrisonersDilemma />}
