@@ -30,7 +30,7 @@ const ResearcherExperimentList = (props: Props) => {
         );
       })}
 
-      <Link to='/myresearch/experiments'>
+      <Link to='/datarequest'>
         <Typography sx={{ textAlign: 'right', margin: '0 1rem' }}>
           {'Show More >>'}
         </Typography>
