@@ -14,7 +14,7 @@ const ParticipantFeedback = () => {
     >
 
       <ParticipantSideBar />
-      <FeedbackForm />
+      <FeedbackForm title="Feedback for Platform" />
 
     </Box>
   );
