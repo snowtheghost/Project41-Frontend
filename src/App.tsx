@@ -49,12 +49,18 @@ const App = () => {
             <Route path='/myrewards' element={<Rewards />} />
             <Route path='/myprofile' element={<Profile />} />
             <Route path='/settings' element={<Settings />} />
-            <Route path='/participant/feedback' element={<ParticipantFeedback />} />
+            <Route
+              path='/participant/feedback'
+              element={<ParticipantFeedback />}
+            />
             <Route path='/myresearch' element={<MyResearch />} />
             <Route path='/othersresearch' element={<OthersResearch />} />
             <Route path='/datarequest' element={<DataRequest />} />
             <Route path='/sendrewards' element={<SendRewards />} />
-            <Route path='/researcher/feedback' element={<ResearcherFeedback />} />
+            <Route
+              path='/researcher/feedback'
+              element={<ResearcherFeedback />}
+            />
             <Route path='/:gameId/home' element={<GameHomePage />} />
             <Route path='/:gameId/information' element={<GameInformation />} />
             <Route path='/:gameId/consent' element={<GameConsent />} />
