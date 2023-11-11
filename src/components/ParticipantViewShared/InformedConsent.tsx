@@ -17,6 +17,7 @@ const ConsentContainer = styled.div`
 `;
 
 const ConsentTitle = styled.div`
+    color: #05004E;
     margin-top: 20px;
     margin-bottom: 5px;
     text-align: center;
@@ -32,28 +33,28 @@ const ConsentText = styled.div`
 `;
 
 const SectionTitle = styled.h2`
-  color: #05004E;
-  margin-bottom: 10px;
+    color: #05004E;
+    margin-bottom: 10px;
 `;
 
 const SectionContent = styled.p`
-  font-size: 16px;
-  margin-bottom: 20px;
-  white-space: pre-line;
+    font-size: 16px;
+    margin-bottom: 20px;
+    white-space: pre-line;
 `;
 
 const HighlightedText = styled.span`
-  color: #dd6868;
-  font-weight: bold;
+    color: #dd6868;
+    font-weight: bold;
 `;
 
 const ColoredText = styled.span`
-  color: #dd6868;
+    color: #dd6868;
 `;
 
 type InfoSectionProps = {
-  title: string;
-  children: React.ReactNode;
+    title: string;
+    children: React.ReactNode;
 };
 
 const AgreeButton = styled.button`
