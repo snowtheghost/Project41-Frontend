@@ -46,23 +46,22 @@ const SendButton = styled.button`
 `;
 
 type FeedbackFormProps = {
-    title: string; // Add a title prop
+    title: string;
   };
 
-  const FeedbackForm: React.FC<FeedbackFormProps> = ({ title }) => { // Destructure the title prop
+  const FeedbackForm: React.FC<FeedbackFormProps> = ({ title }) => {
     const [feedback, setFeedback] = useState('');
-  
+
     const handleFeedbackChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
       setFeedback(e.target.value);
     };
-  
+
     const handleSubmit = (e: React.FormEvent) => {
       e.preventDefault();
-      // Handle form submission
       console.log('Feedback:', feedback);
       setFeedback(''); // Clear the textarea
     };
-  
+
     return (
         <FeedbackContainer>
         <FeedbackTitle>{title}</FeedbackTitle>
@@ -77,5 +76,6 @@ type FeedbackFormProps = {
         </FeedbackContainer>
     );
   };
-  
+
   export default FeedbackForm;
+  
