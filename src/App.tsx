@@ -32,6 +32,8 @@ import GameHomePage from './pages/ParticipantView/GamePages/GameHomePage';
 import GameFeedback from './pages/ParticipantView/GamePages/GameFeedback';
 import GameConsent from './pages/ParticipantView/GamePages/Consent';
 import GameInformation from './pages/ParticipantView/GamePages/GameInformation';
+import ExperimentList from './pages/ResearcherView/ExperimentList';
+import ExperimentData from './pages/ResearcherView/[experimentId]/ExperimentData';
 
 const App = () => {
   const queryClient = new QueryClient();
@@ -54,6 +56,14 @@ const App = () => {
               element={<ParticipantFeedback />}
             />
             <Route path='/myresearch' element={<MyResearch />} />
+            <Route
+              path='/myresearch/experiments'
+              element={<ExperimentList />}
+            />
+            <Route
+              path='/myresearch/experiments/:experimentId'
+              element={<ExperimentData />}
+            />
             <Route path='/othersresearch' element={<OthersResearch />} />
             <Route path='/datarequest' element={<DataRequest />} />
             <Route path='/sendrewards' element={<SendRewards />} />
