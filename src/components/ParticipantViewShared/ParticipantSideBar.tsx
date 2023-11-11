@@ -35,7 +35,7 @@ const MenuItemLinks = styled(Link)<{isActive: boolean}>`
     align-items: center;
     padding: 0 1rem;
     font-size: 18px;
-    font-weight: 450;
+    font-weight: 500;
     text-decoration: none;
 
     &:hover {
