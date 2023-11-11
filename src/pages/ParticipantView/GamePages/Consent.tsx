@@ -5,13 +5,11 @@ import InformedConsent from 'src/components/ParticipantViewShared/InformedConsen
 
 
 const GameConsent: React.FC = () =>{
-  const [consentContent, setConsentContent] = React.useState<string>('');
-
 
   // Handle the agree action
   const handleAgree = () => {
     console.log('User agreed to the informed consent');
-    // You could navigate to the next page or perform another action here
+    // Navigate to the next page or perform another action here
   };
 
   return (
@@ -24,7 +22,7 @@ const GameConsent: React.FC = () =>{
       }}
     >
       <GameSideBar />
-      <InformedConsent content={consentContent} onAgree={handleAgree} />
+      <InformedConsent onAgree={handleAgree} />
 
     </Box>
   );
