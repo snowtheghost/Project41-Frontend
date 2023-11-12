@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const ConsentContainer = styled.div`
     padding: 0 20px;
@@ -48,6 +49,24 @@ const ColoredText = styled.span`
     color: #dd6868;
 `;
 
+const ContinueButton = styled.button`
+    background-color: #EBA6A6;
+    color: #05004E;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    margin: 0 auto;
+    display: block;
+
+    &:hover {
+        background-color: #a6eba6;
+    }
+`;
+
 type InfoSectionProps = {
     title: string;
     children: React.ReactNode;
@@ -61,7 +80,15 @@ const InfoSection: React.FC<InfoSectionProps> = ({ title, children }) => (
 );
 
 const Information = () => {
-  return (
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const handleContinue = () => {
+        const basePath = location.pathname.split('/').slice(0, -1).join('/');
+        navigate(`${basePath}/consent`);
+    };
+
+    return (
     <div>
         <ConsentContainer>
             <ConsentTitle>Information</ConsentTitle>
@@ -145,10 +172,11 @@ const Information = () => {
                         If you have any questions regarding this study, or would like additional information to assist you in reaching a decision about participation, contact Peter Duggins at <a href="mailto:pduggins@uwaterloo.ca?subject=Question%20regarding%20Investment%20Game%20Experiment">pduggins@uwaterloo.ca.</a>
                     </p>
                 </InfoSection>
+                <ContinueButton onClick={handleContinue}>Continue</ContinueButton>
             </ConsentText>
         </ConsentContainer>
     </div>
-  );
+    );
 };
 
 export default Information;

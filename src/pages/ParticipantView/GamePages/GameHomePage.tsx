@@ -1,12 +1,24 @@
+import Box from '@mui/material/Box';
+import GamePage from 'src/components/ParticipantViewShared/GamePage';
 import GameSideBar from 'src/components/ParticipantViewShared/GameSideBar';
 
 
 const GameHomePage = () => {
 
   return (
-    <div style={{ backgroundColor: '#F9F8EB', minHeight: '100vh', width: '100%' }}>
-    {<GameSideBar />}
-    </div>
+    <Box
+      sx={{
+        display: 'inline-flex',
+        backgroundColor: '#F9F8EB',
+        width: '100%',
+        height: '100vh',
+      }}
+    >
+
+      <GameSideBar />
+      <GamePage/>
+
+    </Box>
   );
 };
 
