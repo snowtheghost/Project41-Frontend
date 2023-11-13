@@ -40,14 +40,15 @@ const SendButton = styled.button`
   font-weight: 600;
   margin-left: auto;
   display: block;
+  
   &:hover {
     background-color: #e27c7c;
   }
 `;
 
 type FeedbackFormProps = {
-    title: string;
-  };
+  title: string;
+};
 
   const FeedbackForm: React.FC<FeedbackFormProps> = ({ title }) => {
     const [feedback, setFeedback] = useState('');
