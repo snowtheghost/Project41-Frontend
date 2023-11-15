@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 
@@ -7,22 +8,23 @@ import FullPageSpinner from 'src/components/Shared/FullPageSpinner';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
+import Link from '@mui/material/Link';
 
 type Props = {
-  rounds?: number;
   endowment?: number;
 };
 
 const Ultimatum = (props: Props) => {
-  const { rounds = 1, endowment = 100 } = props;
+  const { endowment = 100 } = props;
   const [gameOver, setGameOver] = useState(false);
   const [isError, setIsError] = useState(false);
   const [canAct, setCanAct] = useState(true);
   const [isProposing, setIsProposing] = useState(true);
+  const [round, setRound] = useState(1);
   const [playerScore, setPlayerScore] = useState(0);
   const [opponentScore, setOpponentScore] = useState(0);
   const [playerProposal, setPlayerProposal] = useState(0);
-  const [winner, setWinner] = useState('');
+  const [winner, setWinner] = useState('none');
   let opponentProposal = 0;
 
   const fetchMove = async (move: string) => {
@@ -31,15 +33,12 @@ const Ultimatum = (props: Props) => {
         setGameOver(data.gameState.game_over);
         setPlayerScore(data.gameState.payoff1);
         setOpponentScore(data.gameState.payoff2);
-        if (
+        setIsProposing(
           Object.entries(data.gameState.valid_moves).toString() ===
-          ['accept', 'decline'].toString()
-        ) {
-          setIsProposing(false);
-        } else {
-          setIsProposing(true);
-        }
+            ['accept', 'decline'].toString()
+        );
         setWinner(data.gameState.winner);
+        setRound(round + 1);
         setCanAct(true);
         if (gameOver) {
           endGame();
@@ -73,24 +72,34 @@ const Ultimatum = (props: Props) => {
     };
   }, []);
 
-  // TODO: input with setPlayerProposal
-  // TODO: Winner
   return (
     <Box>
       <Typography>Ultimatum</Typography>
       {isError ? (
         <Typography>An Error has occurred.</Typography>
+      ) : gameOver ? (
+        <Typography>Game over. Winner: {winner}</Typography>
       ) : canAct ? (
-        <Typography>Your Turn</Typography>
+        <Typography>Round {round}. Your Turn</Typography>
       ) : (
-        <Typography>Waiting for opponent's move</Typography>
+        <Typography>Round {round}. Waiting for opponent's move</Typography>
       )}
       <Typography>Your Score: {playerScore}</Typography>
       <Typography>Opponent's Score: {opponentScore}</Typography>
-      {isProposing ? (
+      {gameOver ? (
+        <Link component={RouterLink} to={`/`}>
+          Return Home
+        </Link>
+      ) : isProposing ? (
         <Box>
           <Typography>Enter your proposal between 0 and {endowment}</Typography>
-          <input type='number'></input>
+          <input
+            type='number'
+            value={playerProposal}
+            min={0}
+            max={endowment}
+            onChange={(e) => setPlayerProposal(+e.target.value)}
+          />
           <Button
             disabled={canAct}
             onClick={() => {

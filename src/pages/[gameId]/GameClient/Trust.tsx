@@ -1,24 +1,25 @@
 import { useState, useEffect } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Link, Typography } from '@mui/material';
 
 import axios from 'src/utils/axiosInstance';
 import FullPageSpinner from 'src/components/Shared/FullPageSpinner';
 
 type Props = {
-  rounds?: number;
   endowment?: number;
 };
 
 const Trust = (props: Props) => {
-  const { rounds = 1, endowment = 100 } = props;
+  const { endowment = 100 } = props;
   const [gameOver, setGameOver] = useState(false);
   const [isError, setIsError] = useState(false);
   const [canAct, setCanAct] = useState(true);
   const [playerProposal, setPlayerProposal] = useState(0);
   const [playerScore, setPlayerScore] = useState(0);
   const [opponentScore, setOpponentScore] = useState(0);
-  const [winner, setWinner] = useState('');
+  const [winner, setWinner] = useState('none');
+  const [round, setRounds] = useState(1);
 
   const fetchMove = async (move: string) => {
     try {
@@ -27,6 +28,7 @@ const Trust = (props: Props) => {
         setPlayerScore(data.gameState.payoff1);
         setOpponentScore(data.gameState.payoff2);
         setWinner(data.gameState.winner);
+        setRounds(round + 1);
         setCanAct(true);
         if (gameOver) {
           endGame();
@@ -60,34 +62,45 @@ const Trust = (props: Props) => {
     };
   }, []);
 
-  // TODO: Add Game Over state
-  // TODO: setPlayerProposal to input
-  // TODO: Winner
   return (
     <Box>
       <Typography>Trust</Typography>
       {isError ? (
         <Typography>An error occurred</Typography>
+      ) : gameOver ? (
+        <Typography>Game over. Winner: {winner}</Typography>
       ) : canAct ? (
-        <Typography>Your Turn</Typography>
+        <Typography>Round {round}. Your Turn</Typography>
       ) : (
-        <Typography>Waiting for opponent's move</Typography>
+        <Typography>Round {round}. Waiting for opponent's move</Typography>
       )}
       <Typography>Your Score: {playerScore}</Typography>
       <Typography>Opponent's Score: {opponentScore}</Typography>
-      <Box>
-        <Typography>Enter your proposal between 0 and {endowment}</Typography>
-        <input type='number'></input>
-        <Button
-          disabled={canAct}
-          onClick={() => {
-            setCanAct(false);
-            fetchMove(playerProposal.toString());
-          }}
-        >
-          Submit
-        </Button>
-      </Box>
+      {!gameOver ? (
+        <Box>
+          <Typography>Enter your proposal between 0 and {endowment}</Typography>
+          <input
+            type='number'
+            value={playerProposal}
+            min={0}
+            max={endowment}
+            onChange={(e) => setPlayerProposal(+e.target.value)}
+          />
+          <Button
+            disabled={canAct}
+            onClick={() => {
+              setCanAct(false);
+              fetchMove(playerProposal.toString());
+            }}
+          >
+            Submit
+          </Button>
+        </Box>
+      ) : (
+        <Link component={RouterLink} to={`/`}>
+          Return Home
+        </Link>
+      )}
     </Box>
   );
 };
