@@ -21,7 +21,7 @@ const HomePage = () => {
     fetchUserData();
   }, []);
 
-  const isLoggedIn = true;
+  const isLoggedIn = !!localStorage.getItem('token');
 
   return (
     <Box>{!isLoggedIn ? <LandingPage /> : <Navigate to='/gamelibrary' />}</Box>
