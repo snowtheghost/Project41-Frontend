@@ -31,7 +31,7 @@ const GameCard = (props: Props) => {
         <Typography variant='body2' color='text.secondary' sx={{ mb: 1.5 }}>
           {description}
         </Typography>
-        <Link component={RouterLink} to={`/games/${game}`} sx={{ mt: 'auto' }}>
+        <Link component={RouterLink} to={`/${game}/home`} sx={{ mt: 'auto' }}>
           Play Game
         </Link>
       </CardContent>
