@@ -5,7 +5,8 @@ import Box from '@mui/material/Box';
 const LandingPage = () => {
   return (
     <Box sx={{ margin: '0 1.5rem' }}>
-      <div>
+      <h1>Project41 Website</h1>
+      <Box sx={{ margin: '0 1.5rem' }}>
         <p>Sign in or register to join a game:</p>
         <p>
           Don't have an account? <Link to='/register'>Register</Link>
@@ -25,7 +26,7 @@ const LandingPage = () => {
           Redirect to the Game Home Page{' '}
           <Link to='/:gameId/home'>Game Home Page</Link>
         </p>
-      </div>
+      </Box>
     </Box>
   );
 };

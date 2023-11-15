@@ -13,10 +13,8 @@ const GameLibraryIndex = () => {
         height: '100vh',
       }}
     >
-
       <ParticipantSideBar />
       <GamesList />
-
     </Box>
   );
 };
