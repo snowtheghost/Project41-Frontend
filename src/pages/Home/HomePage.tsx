@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 
-import axios from '../../utils/axiosInstance';
+import axios from 'src/utils/axiosInstance';
 import LandingPage from 'src/components/Home/LandingPage';
-import GamesList from 'src/components/Home/GamesList';
+
+import Box from '@mui/material/Box';
 
 const HomePage = () => {
   const fetchUserData = async () => {
@@ -22,10 +24,7 @@ const HomePage = () => {
   const isLoggedIn = !!localStorage.getItem('token');
 
   return (
-    <div>
-      <h1>Project41 Website</h1>
-      {!isLoggedIn ? <LandingPage /> : <GamesList />}
-    </div>
+    <Box>{!isLoggedIn ? <LandingPage /> : <Navigate to='/gamelibrary' />}</Box>
   );
 };
 

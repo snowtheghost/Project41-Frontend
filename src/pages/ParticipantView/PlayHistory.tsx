@@ -1,8 +1,14 @@
-import GamesList from "src/components/Home/GamesList";
-import ParticipantSideBar from "../../components/ParticipantViewShared/ParticipantSideBar";
-import Box from "@mui/material/Box";
+import GamesList from 'src/components/Home/GamesList';
+import ParticipantSideBar from '../../components/ParticipantViewShared/ParticipantSideBar';
+import Box from '@mui/material/Box';
 
 const PlayHistory = () => {
+  // TODO: Add once we are ready to remove the static screens
+  // const isLoggedIn = !!localStorage.getItem('token');
+  // if (!isLoggedIn) {
+  //   return <Navigate to='/' />;
+  // }
+
   return (
     <Box
       sx={{
@@ -12,11 +18,9 @@ const PlayHistory = () => {
         height: '100vh',
       }}
     >
-
       <ParticipantSideBar />
       {/* // TODO: add games={gamesData} for play history games */}
-      <GamesList /> 
-
+      <GamesList />
     </Box>
   );
 };
