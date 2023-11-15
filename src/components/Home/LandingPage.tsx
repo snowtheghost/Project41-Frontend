@@ -15,10 +15,6 @@ const LandingPage = () => {
           Already have an account? <Link to='/login'>Login</Link>
         </p>
         <p>
-          Redirect to the Game Library{' '}
-          <Link to='/gamelibrary'>Game Library</Link>
-        </p>
-        <p>
           Redirect to the Researcher View{' '}
           <Link to='/myresearch'>Researcher View</Link>
         </p>

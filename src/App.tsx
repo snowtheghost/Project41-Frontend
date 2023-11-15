@@ -45,14 +45,53 @@ const App = () => {
             <Route path='/' element={<HomePage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/register' element={<RegisterPage />} />
-            <Route path='/gamelibrary' element={<GameLibraryIndex />} />
-            <Route path='/playhistory' element={<PlayHistory />} />
-            <Route path='/myrewards' element={<Rewards />} />
-            <Route path='/myprofile' element={<Profile />} />
-            <Route path='/settings' element={<Settings />} />
+            <Route
+              path='/gamelibrary'
+              element={
+                <ProtectedRoute>
+                  <GameLibraryIndex />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/playhistory'
+              element={
+                <ProtectedRoute>
+                  <PlayHistory />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/myrewards'
+              element={
+                <ProtectedRoute>
+                  <Rewards />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/myprofile'
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/settings'
+              element={
+                <ProtectedRoute>
+                  <Settings />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path='/participant/feedback'
-              element={<ParticipantFeedback />}
+              element={
+                <ProtectedRoute>
+                  <ParticipantFeedback />
+                </ProtectedRoute>
+              }
             />
             <Route path='/myresearch' element={<MyResearch />} />
             <Route path='/othersresearch' element={<OthersResearch />} />
