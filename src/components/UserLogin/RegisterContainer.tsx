@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -9,25 +9,50 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 
-export type userType = 'Participant' | 'Researcher';
+import axios from 'src/utils/axiosInstance';
 
-type Props = {
-  handleRegister: (
-    event: { preventDefault: () => void },
-    username: string,
-    email: string,
-    password: string,
-    userType: userType
-  ) => void;
-};
+export type userType = 'PLAYER' | 'RESEARCHER';
 
-const RegisterContainer = (props: Props) => {
-  const { handleRegister } = props;
-  const [userType, setUserType] = useState<userType>('Participant');
+const RegisterContainer = () => {
+  const navigate = useNavigate();
+  const [userType, setUserType] = useState<userType>('PLAYER');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  // THIS TYPING IS BAD. FIX THIS.
+  const handleRegister = async (
+    event: { preventDefault: () => void },
+    username: string,
+    email: string,
+    password: string,
+    type: userType
+  ) => {
+    event.preventDefault();
+
+    try {
+      setIsLoggingIn(true);
+      // Make the API request to register the user
+      const response = await axios.post('/users/register', {
+        username,
+        email,
+        password,
+        type,
+      });
+      const token = response.data.token;
+      // Handle successful registration or any additional logic
+      localStorage.setItem('token', token);
+      // Redirect the user to the homepage or any other desired page
+      navigate('/');
+    } catch (error) {
+      setIsLoggingIn(false);
+      // Handle registration errors, e.g., display an error message to the user
+      console.error(error);
+      setErrorMessage('Registration failed. Please try again.');
+    }
+  };
 
   return (
     <Grid container sx={{ padding: '1rem' }}>
@@ -37,7 +62,7 @@ const RegisterContainer = (props: Props) => {
       <Grid container sx={{ justifyContent: 'center' }}>
         <Grid className='Participant-Button' item xs={6}>
           <Button
-            onClick={() => setUserType('Participant')}
+            onClick={() => setUserType('PLAYER')}
             sx={{
               color: '#05004E',
               backgroundColor: '#76B39D',
@@ -45,7 +70,7 @@ const RegisterContainer = (props: Props) => {
               width: '100%',
               border: 3,
               borderBottom: 0,
-              borderColor: userType === 'Participant' ? '#05004E' : '#76B39D',
+              borderColor: userType === 'PLAYER' ? '#05004E' : '#76B39D',
               borderTopLeftRadius: 12,
               borderTopRightRadius: 12,
               borderBottomLeftRadius: 0,
@@ -60,7 +85,7 @@ const RegisterContainer = (props: Props) => {
           <Grid className='Researcher-Button' item xs={6}>
             <Button
               disabled
-              onClick={() => setUserType('Researcher')}
+              onClick={() => setUserType('RESEARCHER')}
               sx={{
                 color: '#05004E',
                 backgroundColor: '#FF9F65',
@@ -68,7 +93,7 @@ const RegisterContainer = (props: Props) => {
                 width: '100%',
                 border: 3,
                 borderBottom: 0,
-                borderColor: userType === 'Researcher' ? '#05004E' : '#FF9F65',
+                borderColor: userType === 'RESEARCHER' ? '#05004E' : '#FF9F65',
                 borderTopLeftRadius: 12,
                 borderTopRightRadius: 12,
                 borderBottomLeftRadius: 0,
@@ -161,8 +186,7 @@ const RegisterContainer = (props: Props) => {
               type='submit'
               sx={{
                 margin: '1rem 0',
-                backgroundColor:
-                  userType === 'Participant' ? '#76B39D' : '#FF9F65',
+                backgroundColor: userType === 'PLAYER' ? '#76B39D' : '#FF9F65',
                 width: '100%',
                 fontWeight: 800,
               }}
@@ -170,6 +194,11 @@ const RegisterContainer = (props: Props) => {
               {isLoggingIn ? <CircularProgress /> : 'Register'}
             </Button>
           </form>
+          {errorMessage && (
+            <Typography sx={{ color: '#FF0000', margin: '0 1rem' }}>
+              {errorMessage}
+            </Typography>
+          )}
         </Grid>
 
         <Link
