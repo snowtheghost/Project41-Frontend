@@ -175,7 +175,7 @@ const RegisterContainer = (props: Props) => {
         <Link
           component={RouterLink}
           sx={{ color: '#EBA6A6', margin: '1rem', padding: '0.5rem' }}
-          to='/register'
+          to='/login'
         >
           Already have an account?
         </Link>
