@@ -13,15 +13,15 @@ const ExperimentData = () => {
   const { gameId } = useParams();
   const [totalMatches, setTotalMatches] = useState('0');
   const [isLoading, setIsLoading] = useState(true);
-  const [games, setGames] = useState({});
 
-  const fetchAnalytics = async () => {
+  const fetchAnalytics = async (gameType: string) => {
     try {
-      await axios.post(`/games/getGameAnalytics`).then(({ data }) => {
-        setTotalMatches(data?.numPlayed ?? '0');
-        setGames(data.games ?? {});
-        setIsLoading(false);
-      });
+      await axios
+        .post(`/games/getGameAnalytics?gameType=${gameType}`)
+        .then(({ data }) => {
+          setTotalMatches(data?.numPlayed ?? '0');
+          setIsLoading(false);
+        });
     } catch (error) {
       console.error(error);
       setIsLoading(false);
@@ -31,8 +31,8 @@ const ExperimentData = () => {
   // BAD PRACTICE
   useEffect(() => {
     setIsLoading(true);
-    fetchAnalytics();
-  }, []);
+    gameId && fetchAnalytics(gameId);
+  }, [gameId]);
 
   return (
     <Grid
