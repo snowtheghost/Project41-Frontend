@@ -29,7 +29,7 @@ const Ultimatum = (props: Props) => {
 
   const fetchMove = async (move: string) => {
     try {
-      await axios.post(`/games/move?move=${move}`).then(({ data }) => {
+      await axios.post(`/games/move?move="${move}"`).then(({ data }) => {
         setGameOver(data.gameState.game_over);
         setPlayerScore(data.gameState.payoff1);
         setOpponentScore(data.gameState.payoff2);
