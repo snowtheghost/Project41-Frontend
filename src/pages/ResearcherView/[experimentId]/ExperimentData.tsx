@@ -9,10 +9,26 @@ import ResearcherSideBar from 'src/components/ResearcherViewShared/ResearcherSid
 import { useEffect, useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 
+type GameObject = {
+  status: string;
+  message: string;
+  gameState: {
+    board?: string[][];
+    game_over: boolean;
+    winner: string;
+    payoff1: number;
+    payoff2: number;
+    valid_moves: string[];
+  };
+};
+
 const ExperimentData = () => {
   const { gameId } = useParams();
   const [totalMatches, setTotalMatches] = useState('0');
   const [isLoading, setIsLoading] = useState(true);
+  const [matches, setMatches] = useState<
+    { id: string; game_object: GameObject }[]
+  >([]);
 
   const fetchAnalytics = async (gameType: string) => {
     try {
@@ -20,6 +36,7 @@ const ExperimentData = () => {
         .get(`/games/getGameAnalytics?gameType=${gameType}`)
         .then(({ data }) => {
           setTotalMatches(data?.numPlayed ?? '0');
+          setMatches(data.games);
           setIsLoading(false);
         });
     } catch (error) {
@@ -61,11 +78,27 @@ const ExperimentData = () => {
                 Total Matches: {totalMatches}
               </Typography>
               <Typography sx={{ fontSize: '32px', fontWeight: 500 }}>
-                Match Breakdown: In future update
+                Match History:
               </Typography>
-              <Typography sx={{ fontSize: '32px', fontWeight: 500 }}>
-                Match History: In future update
-              </Typography>
+              {matches.map((match) => {
+                const gameState = match.game_object.gameState;
+                return (
+                  <Box sx={{ margin: '0.5rem' }}>
+                    <Typography>
+                      <b>Match:</b> {match.id}
+                    </Typography>
+                    <Typography sx={{ margin: '1rem' }}>
+                      <b>Winner:</b> {gameState.winner}
+                    </Typography>
+                    <Typography sx={{ margin: '1rem' }}>
+                      <b>Player 1 Payout:</b> {gameState.payoff1}
+                    </Typography>
+                    <Typography sx={{ margin: '1rem' }}>
+                      <b>Player 2 Payout:</b> {gameState.payoff2}
+                    </Typography>
+                  </Box>
+                );
+              })}
             </Box>
           </Box>
         )}
