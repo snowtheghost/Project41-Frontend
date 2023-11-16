@@ -23,6 +23,7 @@ const PrisonersDilemma = () => {
         setPlayerPayout(data.gameState.payoff1);
         setOpponentPayout(data.gameState.payoff2);
         setGameOver(data.gameState.game_over);
+        setCanAct(true);
       });
     } catch (error) {
       console.error(error);
@@ -61,7 +62,9 @@ const PrisonersDilemma = () => {
       <Typography variant={'h4'} sx={{ m: '1.5rem', fontWeight: 800 }}>
         Prisoner's Dilemma
       </Typography>
-      {gameOver ? (
+      {isError ? (
+        <p>An error has occurred</p>
+      ) : gameOver ? (
         <Box>
           <Typography>Results:</Typography>
           {playerPayout === 4 && opponentPayout === 4 ? (
@@ -79,13 +82,11 @@ const PrisonersDilemma = () => {
         </Box>
       ) : canAct ? (
         <Typography sx={{ m: '1.5rem', fontWeight: 600 }}>Your Turn</Typography>
-      ) : !isError ? (
+      ) : (
         <Box sx={{ m: '1.5rem' }}>
           <Typography>Waiting for opponent</Typography>
           <CircularProgress sx={{ m: '2rem' }} />
         </Box>
-      ) : (
-        <p>An error has occurred</p>
       )}
       <Button
         disabled={!canAct}

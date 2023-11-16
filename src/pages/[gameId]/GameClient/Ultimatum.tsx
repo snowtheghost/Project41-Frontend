@@ -101,7 +101,7 @@ const Ultimatum = (props: Props) => {
             onChange={(e) => setPlayerProposal(+e.target.value)}
           />
           <Button
-            disabled={canAct}
+            disabled={!canAct}
             onClick={() => {
               setCanAct(false);
               fetchMove(playerProposal.toString());
