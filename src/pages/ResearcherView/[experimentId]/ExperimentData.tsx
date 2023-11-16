@@ -16,12 +16,10 @@ const ExperimentData = () => {
 
   const fetchAnalytics = async (gameType: string) => {
     try {
-      await axios
-        .post(`/games/getGameAnalytics`, { gameType })
-        .then(({ data }) => {
-          setTotalMatches(data?.numPlayed ?? '0');
-          setIsLoading(false);
-        });
+      await axios.post(`/games/getGameAnalytics`).then(({ data }) => {
+        setTotalMatches(data?.numPlayed ?? '0');
+        setIsLoading(false);
+      });
     } catch (error) {
       console.error(error);
       setIsLoading(false);

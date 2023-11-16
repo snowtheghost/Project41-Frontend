@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
-
-import axios from 'src/utils/axiosInstance';
-import FullPageSpinner from 'src/components/Shared/FullPageSpinner';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
+
+import axios from 'src/utils/axiosInstance';
+import FullPageSpinner from 'src/components/Shared/FullPageSpinner';
 
 type Props = {
   endowment?: number;
@@ -23,7 +23,7 @@ const Ultimatum = (props: Props) => {
   const [round, setRound] = useState(1);
   const [playerScore, setPlayerScore] = useState(0);
   const [opponentScore, setOpponentScore] = useState(0);
-  const [playerProposal, setPlayerProposal] = useState(0);
+  const [playerProposal, setPlayerProposal] = useState('0');
   const [winner, setWinner] = useState('none');
   let opponentProposal = 0;
 
@@ -98,7 +98,7 @@ const Ultimatum = (props: Props) => {
             value={playerProposal}
             min={0}
             max={endowment}
-            onChange={(e) => setPlayerProposal(+e.target.value)}
+            onChange={(e) => setPlayerProposal(e.target.value)}
           />
           <Button
             disabled={!canAct}

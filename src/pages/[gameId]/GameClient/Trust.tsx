@@ -15,7 +15,7 @@ const Trust = (props: Props) => {
   const [gameOver, setGameOver] = useState(false);
   const [isError, setIsError] = useState(false);
   const [canAct, setCanAct] = useState(true);
-  const [playerProposal, setPlayerProposal] = useState(0);
+  const [playerProposal, setPlayerProposal] = useState('0');
   const [playerScore, setPlayerScore] = useState(0);
   const [opponentScore, setOpponentScore] = useState(0);
   const [winner, setWinner] = useState('none');
@@ -84,7 +84,7 @@ const Trust = (props: Props) => {
             value={playerProposal}
             min={0}
             max={endowment}
-            onChange={(e) => setPlayerProposal(+e.target.value)}
+            onChange={(e) => setPlayerProposal(e.target.value)}
           />
           <Button
             disabled={!canAct}
