@@ -17,7 +17,7 @@ const ExperimentData = () => {
   const fetchAnalytics = async (gameType: string) => {
     try {
       await axios
-        .post(`/games/getGameAnalytics?gameType=${gameType}`)
+        .get(`/games/getGameAnalytics?gameType=${gameType}`)
         .then(({ data }) => {
           setTotalMatches(data?.numPlayed ?? '0');
           setIsLoading(false);
