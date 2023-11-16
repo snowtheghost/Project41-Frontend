@@ -53,7 +53,6 @@ const GamePage = () => {
   }, [gameId]);
 
   const handlePlayNowClick = (gameId: string) => {
-    console.log(hasConsented);
     if (hasConsented) {
       navigate(`/games/${gameId}/`);
     } else {
