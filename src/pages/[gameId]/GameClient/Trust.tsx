@@ -113,7 +113,7 @@ const TrustLoader = () => {
     try {
       await axios
         .post(
-          '/games/start?gameType=trust&player1_type=real&player2_type=qlearningagent'
+          '/games/start?gameType=trust&player1_type=real&player2_type=minimax'
         )
         .then(() => {
           setIsLoading(false);
