@@ -28,6 +28,9 @@ const ExperimentCard = (props: Props) => {
         <Typography sx={{ fontSize: 24, fontWeight: 800 }} gutterBottom>
           {title}
         </Typography>
+        <Typography sx={{ fontSize: 18, fontWeight: 500 }}>
+          Description:
+        </Typography>
         <Typography variant='body2' color='text.secondary' sx={{ mb: 1.5 }}>
           {description}
         </Typography>

@@ -41,6 +41,7 @@ const LoginContainer = () => {
       const token = response.data.token;
       // Store the token in local storage
       localStorage.setItem('token', token);
+      localStorage.setItem('userType', type); // This is not safe as it is session dependent.
       // Redirect the user to the homepage or any other desired page
       navigate('/');
     } catch (error) {

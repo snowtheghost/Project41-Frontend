@@ -93,29 +93,118 @@ const App = () => {
                 </ProtectedRoute>
               }
             />
-            <Route path='/myresearch' element={<MyResearch />} />
-            <Route path='/othersresearch' element={<OthersResearch />} />
-            <Route path='/datarequest' element={<DataRequest />} />
             <Route
-              path='/datarequest/:experimentId'
-              element={<ExperimentData />}
+              path='/myresearch'
+              element={
+                <ProtectedRoute>
+                  <MyResearch />
+                </ProtectedRoute>
+              }
             />
-            <Route path='/sendrewards' element={<SendRewards />} />
+            <Route
+              path='/othersresearch'
+              element={
+                <ProtectedRoute>
+                  <OthersResearch />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/datarequest'
+              element={
+                <ProtectedRoute>
+                  <DataRequest />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/datarequest/:gameId'
+              element={
+                <ProtectedRoute>
+                  <ExperimentData />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/sendrewards'
+              element={
+                <ProtectedRoute>
+                  <SendRewards />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path='/researcher/feedback'
-              element={<ResearcherFeedback />}
+              element={
+                <ProtectedRoute>
+                  <ResearcherFeedback />
+                </ProtectedRoute>
+              }
             />
-            <Route path='/:gameId/home' element={<GameHomePage />} />
-            <Route path='/:gameId/information' element={<GameInformation />} />
-            <Route path='/:gameId/consent' element={<GameConsent />} />
-            <Route path='/:gameId/feedback' element={<GameFeedback />} />
+            <Route
+              path='/:gameId/home'
+              element={
+                <ProtectedRoute>
+                  <GameHomePage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/:gameId/information'
+              element={
+                <ProtectedRoute>
+                  <GameInformation />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/:gameId/consent'
+              element={
+                <ProtectedRoute>
+                  <GameConsent />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/:gameId/feedback'
+              element={
+                <ProtectedRoute>
+                  <GameFeedback />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path='/games/prisonersdilemma'
-              element={<PrisonersDilemma />}
+              element={
+                <ProtectedRoute>
+                  <PrisonersDilemma />
+                </ProtectedRoute>
+              }
             />
-            <Route path='/games/tictactoe' element={<TicTacToe />} />
-            <Route path='/games/trust' element={<Trust />} />
-            <Route path='/games/ultimatum' element={<Ultimatum />} />
+            <Route
+              path='/games/tictactoe'
+              element={
+                <ProtectedRoute>
+                  <TicTacToe />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/games/trust'
+              element={
+                <ProtectedRoute>
+                  <Trust />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='/games/ultimatum'
+              element={
+                <ProtectedRoute>
+                  <Ultimatum />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path='/funds'
               element={

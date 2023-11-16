@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import Header from 'src/components/Shared/Header';
 
@@ -12,16 +12,7 @@ const Layout = ({ children }) => {
     <div>
       {/* Other layout content */}
       <Header title={'Project 41'} />
-      {isLoggedIn() && <LogoutButton navigate={navigate} />}
-      {isLoggedIn() && (
-        <nav>
-          <ul>
-            <li>
-              <Link to='/funds'>Funds</Link>
-            </li>
-          </ul>
-        </nav>
-      )}
+      {/* {isLoggedIn() && <LogoutButton navigate={navigate} />} */}
       <div style={{ height: '90%' }}>{children}</div>
     </div>
   );

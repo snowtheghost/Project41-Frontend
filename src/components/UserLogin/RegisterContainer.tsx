@@ -7,7 +7,6 @@ import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import Tooltip from '@mui/material/Tooltip';
 
 import axios from 'src/utils/axiosInstance';
 
@@ -44,6 +43,7 @@ const RegisterContainer = () => {
       const token = response.data.token;
       // Handle successful registration or any additional logic
       localStorage.setItem('token', token);
+      localStorage.setItem('userType', type); // This is not safe as it is session dependent.
       // Redirect the user to the homepage or any other desired page
       navigate('/');
     } catch (error) {
@@ -81,29 +81,26 @@ const RegisterContainer = () => {
             Participant
           </Button>
         </Grid>
-        <Tooltip title='To be implemented' placement='top'>
-          <Grid className='Researcher-Button' item xs={6}>
-            <Button
-              disabled
-              onClick={() => setUserType('RESEARCHER')}
-              sx={{
-                color: '#05004E',
-                backgroundColor: '#FF9F65',
-                fontWeight: 800,
-                width: '100%',
-                border: 3,
-                borderBottom: 0,
-                borderColor: userType === 'RESEARCHER' ? '#05004E' : '#FF9F65',
-                borderTopLeftRadius: 12,
-                borderTopRightRadius: 12,
-                borderBottomLeftRadius: 0,
-                borderBottomRightRadius: 0,
-              }}
-            >
-              Researcher
-            </Button>
-          </Grid>
-        </Tooltip>
+        <Grid className='Researcher-Button' item xs={6}>
+          <Button
+            onClick={() => setUserType('RESEARCHER')}
+            sx={{
+              color: '#05004E',
+              backgroundColor: '#FF9F65',
+              fontWeight: 800,
+              width: '100%',
+              border: 3,
+              borderBottom: 0,
+              borderColor: userType === 'RESEARCHER' ? '#05004E' : '#FF9F65',
+              borderTopLeftRadius: 12,
+              borderTopRightRadius: 12,
+              borderBottomLeftRadius: 0,
+              borderBottomRightRadius: 0,
+            }}
+          >
+            Researcher
+          </Button>
+        </Grid>
       </Grid>
       <Paper
         sx={{

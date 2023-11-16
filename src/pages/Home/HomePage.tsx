@@ -22,9 +22,18 @@ const HomePage = () => {
   }, []);
 
   const isLoggedIn = !!localStorage.getItem('token');
+  const userType = localStorage.getItem('userType');
 
   return (
-    <Box>{!isLoggedIn ? <LandingPage /> : <Navigate to='/gamelibrary' />}</Box>
+    <Box>
+      {!isLoggedIn ? (
+        <LandingPage />
+      ) : userType === 'PLAYER' ? (
+        <Navigate to='/gamelibrary' />
+      ) : (
+        <Navigate to='/myresearch' />
+      )}
+    </Box>
   );
 };
 

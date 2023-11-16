@@ -14,14 +14,14 @@ const LandingPage = () => {
         <p>
           Already have an account? <Link to='/login'>Login</Link>
         </p>
-        <p>
+        {/* <p>
           Redirect to the Researcher View{' '}
           <Link to='/myresearch'>Researcher View</Link>
         </p>
         <p>
           Redirect to the Game Home Page{' '}
           <Link to='/:gameId/home'>Game Home Page</Link>
-        </p>
+        </p> */}
       </Box>
     </Box>
   );
