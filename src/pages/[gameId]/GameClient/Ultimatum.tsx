@@ -149,7 +149,7 @@ const UltimatumLoader = () => {
     try {
       await axios
         .post(
-          '/games/start?gameType=ultimatum&player1_type=real&player2_type=qlearningagent&rounds=4'
+          '/games/start?gameType=ultimatum&player1_type=real&player2_type=qlearningagent&num_rounds=4'
         )
         .then(() => {
           setIsLoading(false);
