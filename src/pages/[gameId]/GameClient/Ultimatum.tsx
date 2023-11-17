@@ -34,7 +34,7 @@ const Ultimatum = (props: Props) => {
         setPlayerScore(data.gameState.payoff1);
         setOpponentScore(data.gameState.payoff2);
         setIsProposing(
-          Object.entries(data.gameState.valid_moves).toString() ===
+          Object.entries(data.gameState.valid_moves).toString() !==
             ['accept', 'decline'].toString()
         );
         setWinner(data.gameState.winner);
