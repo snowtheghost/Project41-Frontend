@@ -1,10 +1,20 @@
+import Box from "@mui/material/Box";
 import ParticipantSideBar from "../../components/ParticipantViewShared/ParticipantSideBar";
+import RewardsTable from "src/components/ParticipantViewShared/RewardTable";
 
 const Rewards = () => {
   return (
-    <div style={{ backgroundColor: '#F9F8EB', minHeight: '100vh', width: '100%' }}>
-    {<ParticipantSideBar />}
-    </div>
+    <Box
+      sx={{
+        display: 'inline-flex',
+        backgroundColor: '#F9F8EB',
+        width: '100%',
+        height: '100vh',
+      }}
+    >
+      <ParticipantSideBar />
+      <RewardsTable />
+    </Box>
   );
 };
 
