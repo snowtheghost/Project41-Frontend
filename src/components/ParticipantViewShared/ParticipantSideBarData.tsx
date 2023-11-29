@@ -23,11 +23,6 @@ export const ParticipantSideBarData = [
     icon: <FaIcons.FaUserCircle />,
   },
   {
-    title: 'Settings',
-    path: '/settings',
-    icon: <AntIcons.AiFillSetting />,
-  },
-  {
     title: 'Feedback',
     path: '/participant/feedback',
     icon: <FaIcons.FaCommentDots />,
