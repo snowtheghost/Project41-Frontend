@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
-import GameSideBar from 'src/components/ParticipantViewShared/GameSideBar';
-import Information from 'src/components/ParticipantViewShared/Information';
+import GameSideBar from 'src/components/ParticipantViewShared/GameShared/GameSideBar';
+import Information from 'src/components/ParticipantViewShared/GameShared/Information';
 
 
 const GameInformation = () => {

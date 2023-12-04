@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import GameSideBar from 'src/components/ParticipantViewShared/GameSideBar';
-import InformedConsent from 'src/components/ParticipantViewShared/InformedConsent';
+import GameSideBar from 'src/components/ParticipantViewShared/GameShared/GameSideBar';
+import InformedConsent from 'src/components/ParticipantViewShared/GameShared/InformedConsent';
 
 const messageStyle = {
   position: 'absolute',

@@ -1,4 +1,4 @@
-import GamesList from 'src/components/Home/GamesList';
+import GamesList from 'src/components/ParticipantViewShared/GamesList';
 import ParticipantSideBar from '../../components/ParticipantViewShared/ParticipantSideBar';
 import Box from '@mui/material/Box';
 
