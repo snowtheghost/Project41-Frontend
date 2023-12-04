@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
-import GamePage from 'src/components/ParticipantViewShared/GamePage';
-import GameSideBar from 'src/components/ParticipantViewShared/GameSideBar';
+import GamePage from 'src/components/ParticipantViewShared/GameShared/GamePage';
+import GameSideBar from 'src/components/ParticipantViewShared/GameShared/GameSideBar';
 
 
 const GameHomePage = () => {
