@@ -46,35 +46,51 @@ const SendButton = styled.button`
   }
 `;
 
+const Notification = styled.div`
+  background-color: #76b39d;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 15px;
+  text-align: center;
+  position: fixed;
+  left: 50%;
+  
+`;
+
 type FeedbackFormProps = {
   title: string;
 };
 
   const FeedbackForm: React.FC<FeedbackFormProps> = ({ title }) => {
     const [feedback, setFeedback] = useState('');
-
+    const [showNotification, setShowNotification] = useState(false);
+  
     const handleFeedbackChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
       setFeedback(e.target.value);
     };
-
+  
     const handleSubmit = (e: React.FormEvent) => {
       e.preventDefault();
       console.log('Feedback:', feedback);
       setFeedback(''); // Clear the textarea
+      setShowNotification(true);
+      setTimeout(() => setShowNotification(false), 2000);
     };
 
     return (
-        <FeedbackContainer>
+      <FeedbackContainer>
         <FeedbackTitle>{title}</FeedbackTitle>
         <form onSubmit={handleSubmit}>
-            <FeedbackTextArea
+          <FeedbackTextArea
             placeholder="Write your feedback here..."
             value={feedback}
             onChange={handleFeedbackChange}
-            />
-            <SendButton type="submit">Send</SendButton>
+          />
+          <SendButton type="submit">Send</SendButton>
         </form>
-        </FeedbackContainer>
+        {showNotification && <Notification>Your feedback has been submitted.</Notification>}
+      </FeedbackContainer>
     );
   };
 
