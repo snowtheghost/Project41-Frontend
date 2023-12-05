@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import FeedbackForm from 'src/components/ParticipantViewShared/FeedbackForm';
-import GameSideBar from 'src/components/ParticipantViewShared/GameSideBar';
+import GameSideBar from 'src/components/ParticipantViewShared/GameShared/GameSideBar';
 
 
 const GameFeedback = () => {

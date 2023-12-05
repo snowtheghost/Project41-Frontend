@@ -43,8 +43,8 @@ const ColoredText = styled.span`
 `;
 
 const AgreeButton = styled.button`
-    background-color: #EBA6A6;
-    color: #05004E;
+    background-color: #eba6a6;
+    color: #05004e;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;

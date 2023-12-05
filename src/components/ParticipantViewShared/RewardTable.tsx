@@ -89,12 +89,12 @@ const RewardsTable: React.FC = () => {
       navigator.clipboard.writeText(event.value)
         .then(() => {
           setNotification('Code copied to clipboard');
-          setTimeout(() => setNotification(''), 500);
+          setTimeout(() => setNotification(''), 1000);
         })
         .catch(err => {
           console.error('Failed to copy text: ', err);
           setNotification('Failed to copy code');
-          setTimeout(() => setNotification(''), 500);
+          setTimeout(() => setNotification(''), 1000);
         });
     }
   };
