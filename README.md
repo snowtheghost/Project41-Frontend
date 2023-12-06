@@ -2,15 +2,29 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Preparation before start
-Make sure you have installed nodejs, npm, and mui packages on your machine.
-You can run the command lines below to install.
+## Frontend Local Development Setup
 
+### Pre-requisites
+Ensure that Node.js `v18.15.0` and npm `v9.5.0`, are installed into your machine.
+If you do not have them installed, you can install them using these commands:
 ```
 sudo apt update
 sudo apt install nodejs npm
-npm install @mui/material @emotion/react @emotion/styled
 ```
+
+### Setup
+1. Clone this repository to your local machine
+2. Open your terminal, and navigate to the repository's root folder: `project-41-frontend` by default. It will be different if you renamed the folder.
+3. Run `npm install` to make sure that all the packages are properly installed.
+4. You can test the website locally by running `npm start`. The frontend server will then start and be running on http://localhost:3000
+
+### Project Dependencies
+- Typescript
+- React DOM
+- Axios/React Query (Both serve the same purpose)
+- Jest
+- MUI
+- AG Grid
     
 ## Available Scripts
 
@@ -48,6 +62,19 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Deployment
+Currently, this project is deployed using AWS Amplify. This service will auto-generate a Docker image and deploy your website every time a specific branch is edited. We recommend setting up multiple branches for staging and deployment and to not deploy your public website using `main`, as unintended bugs can slip through testing.
+
+### Steps:
+1. Set up an AWS Account (requires credit card)
+2. Select the AWS Amplify Service
+3. In All Apps Page, select New Apps -> Host Web App
+4. Choose Github for existing code
+5. Once connected, select a repo and a branch for deployment.
+6. Choose your build settings
+7. Review and AWS Amplify will take care of the deployment!
+
 
 ## Learn More
 
