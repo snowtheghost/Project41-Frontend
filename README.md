@@ -75,6 +75,17 @@ Currently, this project is deployed using AWS Amplify. This service will auto-ge
 6. Choose your build settings
 7. Review and AWS Amplify will take care of the deployment!
 
+## Frontend Architecture
+On the Front-end, we primarily aim to keep our code self-documenting whenever we can. As a result, we try to maintain single-responsibility principle for each file. At the top of the directory, the `src` is split up into 4 Main Folders:
+- Components: For individual GUI components that make up a website's responsiveness and usability
+- Pages: The skeleton and framework from which each page is set up. Dependent on Components and Util files to function.
+- Util: All the API and other technical files that do not return a User-viewable JSX component.
+- Testing: Where we store the tests in the codebase. Dependent on Pages.
+
+As you go down the directory, each of the folders detail what aspect of the website it is responsible for.
+
+### App.tsx
+The root file from which the website is run. Using React DOM, we control where a given URL should go within the website. Note that some pages are protected and cannot be accessed without being logged in. If you are not logged in and try to access that page, you will be redirected back to the Home page.
 
 ## Learn More
 
