@@ -52,7 +52,7 @@ const DeleteAccountFlow = (props: Props) => {
         <DialogTitle>Are you sure you want to delete your account?</DialogTitle>
         <DialogContent>
           {userType === 'PLAYER'
-            ? 'All your progress and points will be removed once deleted. Any data collected by a researcher will remain unless you opt out of an experiment!'
+            ? 'All your progress and points will be removed once deleted. Any data collected by a researcher will remain unless you opt out of an experiment! If you wish opt out after deleting your account, contact the researcher via email or through our feedback form to withdraw from an experiment.'
             : 'By deleting your account you will lose action to all the games and research you deployed from using this account!'}
         </DialogContent>
         <DialogActions>
