@@ -1,10 +1,14 @@
-import ParticipantSideBar from "../../components/ParticipantViewShared/ParticipantSideBar";
+import Box from '@mui/material/Box';
+
+import DeleteAccountFlow from 'src/components/Shared/Users/DeleteAccountFlow';
+import ParticipantSideBar from 'src/components/ParticipantViewShared/ParticipantSideBar';
 
 const Profile = () => {
   return (
-    <div style={{ backgroundColor: '#F9F8EB', minHeight: '100vh', width: '100%' }}>
-    {<ParticipantSideBar />}
-    </div>
+    <Box sx={{ backgroundColor: '#F9F8EB', minHeight: '100vh', width: '100%' }}>
+      <ParticipantSideBar />
+      <DeleteAccountFlow />
+    </Box>
   );
 };
 
