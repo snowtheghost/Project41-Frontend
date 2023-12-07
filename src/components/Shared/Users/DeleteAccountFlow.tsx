@@ -9,8 +9,14 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 import axios from 'src/utils/axiosInstance';
 import FullPageSpinner from 'src/components/Shared/FullPageSpinner';
+import { userType } from 'src/components/UserLogin/RegisterContainer';
 
-const DeleteAccountFlow = () => {
+type Props = {
+  userType: userType;
+};
+
+const DeleteAccountFlow = (props: Props) => {
+  const { userType } = props;
   const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
@@ -45,9 +51,9 @@ const DeleteAccountFlow = () => {
       <Dialog open={open} onClose={() => setOpen(false)}>
         <DialogTitle>Are you sure you want to delete your account?</DialogTitle>
         <DialogContent>
-          All your progress and points will be removed if you do so. Any data
-          collected by a researcher will remain unless you opt out of an
-          experiment!
+          {userType === 'PLAYER'
+            ? 'All your progress and points will be removed once deleted. Any data collected by a researcher will remain unless you opt out of an experiment!'
+            : 'By deleting your account you will lose action to all the games and research you deployed from using this account!'}
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setOpen(false)}>Back</Button>

@@ -34,7 +34,7 @@ const MyResearch = () => {
             </Typography>
             <ResearcherExperimentList experimentList={experimentList} />
           </Grid>
-          <DeleteAccountFlow />
+          <DeleteAccountFlow userType={'RESEARCHER'} />
         </Grid>
       </Grid>
     </Grid>
