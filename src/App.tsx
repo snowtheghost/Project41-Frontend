@@ -27,7 +27,6 @@ import DataRequest from './pages/ResearcherView/DataRequest';
 import SendRewards from './pages/ResearcherView/SendRewards';
 import ResearcherFeedback from './pages/ResearcherView/ResearcherFeedback';
 import ParticipantFeedback from './pages/ParticipantView/ParticipantFeedback';
-import Settings from './pages/ParticipantView/Settings';
 import GameHomePage from './pages/ParticipantView/GamePages/GameHomePage';
 import GameFeedback from './pages/ParticipantView/GamePages/GameFeedback';
 import GameConsent from './pages/ParticipantView/GamePages/Consent';

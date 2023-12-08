@@ -1,6 +1,7 @@
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
+import DeleteAccountFlow from 'src/components/Shared/Users/DeleteAccountFlow';
 import ResearcherExperimentList from 'src/components/ResearcherViewShared/MyResearch/ResearcherExperimentList';
 import ResearcherProfileInfo from 'src/components/ResearcherViewShared/MyResearch/ResearcherProfileInfo';
 import ResearcherSideBar from 'src/components/ResearcherViewShared/ResearcherSideBar';
@@ -33,6 +34,7 @@ const MyResearch = () => {
             </Typography>
             <ResearcherExperimentList experimentList={experimentList} />
           </Grid>
+          <DeleteAccountFlow userType={'RESEARCHER'} />
         </Grid>
       </Grid>
     </Grid>
