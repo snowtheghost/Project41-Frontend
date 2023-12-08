@@ -1,13 +1,14 @@
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
 import axios from 'src/utils/axiosInstance';
 import ResearcherSideBar from 'src/components/ResearcherViewShared/ResearcherSideBar';
-import { useEffect, useState } from 'react';
-import CircularProgress from '@mui/material/CircularProgress';
 
 type GameObject = {
   status: string;
@@ -26,6 +27,8 @@ const ExperimentData = () => {
   const { gameId } = useParams();
   const [totalMatches, setTotalMatches] = useState('0');
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingCSV, setIsLoadingCSV] = useState(false);
+  const [csvURL, setCsvURL] = useState('');
   const [matches, setMatches] = useState<
     { id: string; game_object: GameObject }[]
   >([]);
@@ -37,11 +40,29 @@ const ExperimentData = () => {
         .then(({ data }) => {
           setTotalMatches(data?.numPlayed ?? '0');
           setMatches(data.games);
+          setCsvURL(data.url);
           setIsLoading(false);
         });
     } catch (error) {
       console.error(error);
       setIsLoading(false);
+    }
+  };
+
+  const fetchCSV = async (gameType: string) => {
+    try {
+      await axios.get(csvURL).then((response) => {
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', `${gameType}_results.csv`);
+        document.body.appendChild(link);
+        link.click();
+        setIsLoadingCSV(false);
+      });
+    } catch (error) {
+      console.error(error);
+      setIsLoadingCSV(false);
     }
   };
 
@@ -60,8 +81,26 @@ const ExperimentData = () => {
         <ResearcherSideBar />
       </Grid>
       <Grid item sx={{ margin: '1rem' }}>
-        <Link to='/datarequest'>{'<< Experiments'}</Link>
-        {isLoading ? (
+        <Grid container direction={'row'} justifyContent={'space-between'}>
+          <Link to='/datarequest' style={{ margin: '0.5rem' }}>
+            {'<< Experiments'}
+          </Link>
+          <Button
+            disabled={isLoading}
+            sx={{
+              'color': '#f9f8eb',
+              'backgroundColor': '#05004e',
+              ':hover': { backgroundColor: '#f9f8eb', color: '#05004e' },
+            }}
+            onClick={() => {
+              setIsLoadingCSV(true);
+              gameId && fetchCSV(gameId);
+            }}
+          >
+            {!isLoading ? 'Export to CSV' : <CircularProgress />}
+          </Button>
+        </Grid>
+        {isLoadingCSV ? (
           <Box sx={{ margin: '1rem' }}>
             <CircularProgress />
           </Box>
