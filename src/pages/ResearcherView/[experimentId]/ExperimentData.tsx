@@ -40,7 +40,7 @@ const ExperimentData = () => {
         .then(({ data }) => {
           setTotalMatches(data?.numPlayed ?? '0');
           setMatches(data.games);
-          setCsvURL(data.url);
+          setCsvURL(data.url ?? '');
           setIsLoading(false);
         });
     } catch (error) {
