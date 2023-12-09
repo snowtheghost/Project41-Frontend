@@ -4,33 +4,40 @@ import {
   Routes,
   Navigate,
 } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import Layout from './components/Shared/Layout';
 import ProtectedRoute from './components/Shared/ProtectedRoute';
 
-import FundsPage from './pages/Landing/FundsPage';
+// HOME/LANDING PAGE
 import HomePage from './pages/Landing/Landing';
 import RegisterPage from './pages/UserLogin/Register/RegisterPage';
 import LoginPage from './pages/UserLogin/Login/LoginPage';
+
+// PARTICIPANT SCREENS
 import GameLibraryIndex from './pages/ParticipantView/GameLibrary/GameLibraryIndex';
+import ParticipantFeedback from './pages/ParticipantView/ParticipantFeedback/ParticipantFeedback';
 import PlayHistory from './pages/ParticipantView/PlayHistory/PlayHistory';
-import Rewards from './pages/ParticipantView/Rewards/Rewards';
 import Profile from './pages/ParticipantView/Profile/Profile';
-import TicTacToe from './pages/ParticipantView/GameLibrary/GameClient/TicTacToe';
-import PrisonersDilemma from './pages/ParticipantView/GameLibrary/GameClient/PrisonersDilemma';
-import Trust from './pages/ParticipantView/GameLibrary/GameClient/Trust';
-import Ultimatum from './pages/ParticipantView/GameLibrary/GameClient/Ultimatum';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import Rewards from './pages/ParticipantView/Rewards/Rewards';
+
+import GameHomePage from './pages/ParticipantView/[gameID]/Home/GameHomePage';
+import GameFeedback from './pages/ParticipantView/[gameID]/Feedback/GameFeedback';
+import GameConsent from './pages/ParticipantView/[gameID]/Consent/Consent';
+import GameInformation from './pages/ParticipantView/[gameID]/Information/GameInformation';
+
+import TicTacToe from './pages/ParticipantView/GameLibrary/GameClient/ExampleGames/TicTacToe';
+import PrisonersDilemma from './pages/ParticipantView/GameLibrary/GameClient/ExampleGames/PrisonersDilemma';
+import Trust from './pages/ParticipantView/GameLibrary/GameClient/ExampleGames/Trust';
+import Ultimatum from './pages/ParticipantView/GameLibrary/GameClient/ExampleGames/Ultimatum';
+
+// RESEARCHER SCREENS
 import MyResearch from './pages/ResearcherView/MyResearch/MyResearch';
 import OthersResearch from './pages/ResearcherView/OthersResearch/OthersResearch';
 import DataRequest from './pages/ResearcherView/DataRequest/DataRequest';
 import SendRewards from './pages/ResearcherView/SendRewards/SendRewards';
 import ResearcherFeedback from './pages/ResearcherView/ResearcherFeedback/ResearcherFeedback';
-import ParticipantFeedback from './pages/ParticipantView/ParticipantFeedback/ParticipantFeedback';
-import GameHomePage from './pages/ParticipantView/[gameID]/Home/GameHomePage';
-import GameFeedback from './pages/ParticipantView/[gameID]/Feedback/GameFeedback';
-import GameConsent from './pages/ParticipantView/[gameID]/Consent/Consent';
-import GameInformation from './pages/ParticipantView/[gameID]/Information/GameInformation';
+
 import ExperimentData from './pages/ResearcherView/DataRequest/[experimentId]/ExperimentData';
 
 const App = () => {
@@ -193,14 +200,6 @@ const App = () => {
               element={
                 <ProtectedRoute>
                   <Ultimatum />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path='/funds'
-              element={
-                <ProtectedRoute>
-                  <FundsPage />
                 </ProtectedRoute>
               }
             />

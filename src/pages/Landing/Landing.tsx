@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import axios from 'src/utils/axiosInstance';
-import LandingPage from 'src/components/Home/LandingPage';
+import LandingPage from 'src/components/Landing/LandingPage';
 
 import Box from '@mui/material/Box';
 

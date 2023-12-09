@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
 
-import ParticipantSideBar from '../../../components/ParticipantViewShared/Sidebar/ParticipantSideBar';
+import ParticipantSideBar from 'src/components/ParticipantViewShared/Sidebar/ParticipantSideBar';
 import GamesList from 'src/components/ParticipantViewShared/GameLibrary/GamesList';
 
 const GameLibraryIndex = () => {

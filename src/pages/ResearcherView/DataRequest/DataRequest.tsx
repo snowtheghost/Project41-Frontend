@@ -1,8 +1,8 @@
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import ExperimentCard from 'src/components/ResearcherViewShared/DataRequest/ExperimentCard';
 
+import ExperimentCard from 'src/components/ResearcherViewShared/DataRequest/ExperimentCard';
 import ResearcherSideBar from 'src/components/ResearcherViewShared/Sidebar/ResearcherSideBar';
 
 const DataRequest = () => {

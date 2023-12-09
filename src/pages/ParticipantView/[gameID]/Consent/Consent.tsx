@@ -1,10 +1,12 @@
-import Box from '@mui/material/Box';
 import React, { useState } from 'react';
+
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+
 import GameSideBar from 'src/components/ParticipantViewShared/[gameID]/GameSidebar/GameSideBar';
-import InformedConsent from 'src/components/ParticipantViewShared/[gameID]/InformedConsent';
+import InformedConsent from 'src/components/ParticipantViewShared/[gameID]/Consent/InformedConsent';
 
 const messageStyle = {
   position: 'absolute',

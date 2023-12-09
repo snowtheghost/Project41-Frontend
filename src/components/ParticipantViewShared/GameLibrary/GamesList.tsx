@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
+import styledcomp from 'styled-components';
+
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
-import styledcomp from 'styled-components';
+import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
-import { IconButton } from '@mui/material';
-import GameCard from 'src/components/ParticipantViewShared/GameLibrary/GameCard';
 import Typography from '@mui/material/Typography';
+
+import GameCard from 'src/components/ParticipantViewShared/GameLibrary/GameCard';
 
 export type Game = {
   gameId: string;

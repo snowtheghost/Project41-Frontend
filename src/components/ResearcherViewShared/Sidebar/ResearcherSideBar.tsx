@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { ResearcherSideBarData } from '../ResearcherSideBarData';
+import { ResearcherSideBarData } from './ResearcherSideBarData';
 
 const SidebarMenu = styled.div`
   min-width: 250px;

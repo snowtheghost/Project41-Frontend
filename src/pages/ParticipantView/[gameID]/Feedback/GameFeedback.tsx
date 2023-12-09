@@ -1,4 +1,5 @@
-import { Box } from '@mui/material';
+import Box from '@mui/material/Box';
+
 import FeedbackForm from 'src/components/ParticipantViewShared/Feedback/FeedbackForm';
 import GameSideBar from 'src/components/ParticipantViewShared/[gameID]/GameSidebar/GameSideBar';
 

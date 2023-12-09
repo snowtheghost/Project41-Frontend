@@ -1,14 +1,9 @@
-import GamesList from 'src/components/ParticipantViewShared/GameLibrary/GamesList';
-import ParticipantSideBar from '../../../components/ParticipantViewShared/Sidebar/ParticipantSideBar';
 import Box from '@mui/material/Box';
 
-const PlayHistory = () => {
-  // TODO: Add once we are ready to remove the static screens
-  // const isLoggedIn = !!localStorage.getItem('token');
-  // if (!isLoggedIn) {
-  //   return <Navigate to='/' />;
-  // }
+import GamesList from 'src/components/ParticipantViewShared/GameLibrary/GamesList';
+import ParticipantSideBar from 'src/components/ParticipantViewShared/Sidebar/ParticipantSideBar';
 
+const PlayHistory = () => {
   return (
     <Box
       sx={{

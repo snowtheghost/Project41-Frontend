@@ -1,10 +1,10 @@
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
+import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 
 import { isLoggedIn, logout } from 'src/utils/auth';
-import { Button } from '@mui/material';
 
 type Props = {
   title: String;

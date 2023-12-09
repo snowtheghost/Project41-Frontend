@@ -28,10 +28,9 @@ const FeedbackTextArea = styled.textarea`
   box-sizing: border-box;
 `;
 
-
 const SendButton = styled.button`
-  background-color: #EBA6A6;
-  color: #05004E;
+  background-color: #eba6a6;
+  color: #05004e;
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
@@ -40,7 +39,7 @@ const SendButton = styled.button`
   font-weight: 600;
   margin-left: auto;
   display: block;
-  
+
   &:hover {
     background-color: #e27c7c;
   }
@@ -55,44 +54,44 @@ const Notification = styled.div`
   text-align: center;
   position: fixed;
   left: 50%;
-  
 `;
 
 type FeedbackFormProps = {
   title: string;
 };
 
-  const FeedbackForm: React.FC<FeedbackFormProps> = ({ title }) => {
-    const [feedback, setFeedback] = useState('');
-    const [showNotification, setShowNotification] = useState(false);
-  
-    const handleFeedbackChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-      setFeedback(e.target.value);
-    };
-  
-    const handleSubmit = (e: React.FormEvent) => {
-      e.preventDefault();
-      console.log('Feedback:', feedback);
-      setFeedback(''); // Clear the textarea
-      setShowNotification(true);
-      setTimeout(() => setShowNotification(false), 2000);
-    };
+const FeedbackForm: React.FC<FeedbackFormProps> = ({ title }) => {
+  const [feedback, setFeedback] = useState('');
+  const [showNotification, setShowNotification] = useState(false);
 
-    return (
-      <FeedbackContainer>
-        <FeedbackTitle>{title}</FeedbackTitle>
-        <form onSubmit={handleSubmit}>
-          <FeedbackTextArea
-            placeholder="Write your feedback here..."
-            value={feedback}
-            onChange={handleFeedbackChange}
-          />
-          <SendButton type="submit">Send</SendButton>
-        </form>
-        {showNotification && <Notification>Your feedback has been submitted.</Notification>}
-      </FeedbackContainer>
-    );
+  const handleFeedbackChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setFeedback(e.target.value);
   };
 
-  export default FeedbackForm;
-  
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Feedback:', feedback);
+    setFeedback(''); // Clear the textarea
+    setShowNotification(true);
+    setTimeout(() => setShowNotification(false), 2000);
+  };
+
+  return (
+    <FeedbackContainer>
+      <FeedbackTitle>{title}</FeedbackTitle>
+      <form onSubmit={handleSubmit}>
+        <FeedbackTextArea
+          placeholder='Write your feedback here...'
+          value={feedback}
+          onChange={handleFeedbackChange}
+        />
+        <SendButton type='submit'>Send</SendButton>
+      </form>
+      {showNotification && (
+        <Notification>Your feedback has been submitted.</Notification>
+      )}
+    </FeedbackContainer>
+  );
+};
+
+export default FeedbackForm;
