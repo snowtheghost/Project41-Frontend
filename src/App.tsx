@@ -27,10 +27,10 @@ import DataRequest from './pages/ResearcherView/DataRequest/DataRequest';
 import SendRewards from './pages/ResearcherView/SendRewards/SendRewards';
 import ResearcherFeedback from './pages/ResearcherView/ResearcherFeedback/ResearcherFeedback';
 import ParticipantFeedback from './pages/ParticipantView/ParticipantFeedback/ParticipantFeedback';
-import GameHomePage from './pages/ParticipantView/[gameID]/GameHomePage';
-import GameFeedback from './pages/ParticipantView/[gameID]/GameFeedback';
-import GameConsent from './pages/ParticipantView/[gameID]/Consent';
-import GameInformation from './pages/ParticipantView/[gameID]/GameInformation';
+import GameHomePage from './pages/ParticipantView/[gameID]/Home/GameHomePage';
+import GameFeedback from './pages/ParticipantView/[gameID]/Feedback/GameFeedback';
+import GameConsent from './pages/ParticipantView/[gameID]/Consent/Consent';
+import GameInformation from './pages/ParticipantView/[gameID]/Information/GameInformation';
 import ExperimentData from './pages/ResearcherView/DataRequest/[experimentId]/ExperimentData';
 
 const App = () => {
