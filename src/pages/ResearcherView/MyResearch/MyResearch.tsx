@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import DeleteAccountFlow from 'src/components/Shared/Users/DeleteAccountFlow';
 import ResearcherExperimentList from 'src/components/ResearcherViewShared/MyResearch/ResearcherExperimentList';
 import ResearcherProfileInfo from 'src/components/ResearcherViewShared/MyResearch/ResearcherProfileInfo';
-import ResearcherSideBar from 'src/components/ResearcherViewShared/ResearcherSideBar';
+import ResearcherSideBar from 'src/components/ResearcherViewShared/Sidebar/ResearcherSideBar';
 
 const MyResearch = () => {
   // This is a static placeholder. To remove once fetching is set up.

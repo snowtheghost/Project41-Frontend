@@ -6,7 +6,7 @@ import styledcomp from 'styled-components';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { IconButton } from '@mui/material';
-import GameCard from 'src/components/ParticipantViewShared/GameCard';
+import GameCard from 'src/components/ParticipantViewShared/GameLibrary/GameCard';
 import Typography from '@mui/material/Typography';
 
 export type Game = {

@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 
-import ParticipantSideBar from '../../../components/ParticipantViewShared/ParticipantSideBar';
-import GamesList from 'src/components/ParticipantViewShared/GamesList';
+import ParticipantSideBar from '../../../components/ParticipantViewShared/Sidebar/ParticipantSideBar';
+import GamesList from 'src/components/ParticipantViewShared/GameLibrary/GamesList';
 
 const GameLibraryIndex = () => {
   return (
@@ -13,10 +13,8 @@ const GameLibraryIndex = () => {
         height: '100vh',
       }}
     >
-
       <ParticipantSideBar />
       <GamesList />
-
     </Box>
   );
 };

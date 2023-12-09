@@ -1,10 +1,8 @@
 import Box from '@mui/material/Box';
-import GamePage from 'src/components/ParticipantViewShared/GameShared/GamePage';
-import GameSideBar from 'src/components/ParticipantViewShared/GameShared/GameSideBar';
-
+import GamePage from 'src/components/ParticipantViewShared/[gameID]/GamePage';
+import GameSideBar from 'src/components/ParticipantViewShared/[gameID]/GameSidebar/GameSideBar';
 
 const GameHomePage = () => {
-
   return (
     <Box
       sx={{
@@ -14,10 +12,8 @@ const GameHomePage = () => {
         height: '100vh',
       }}
     >
-
       <GameSideBar />
-      <GamePage/>
-
+      <GamePage />
     </Box>
   );
 };

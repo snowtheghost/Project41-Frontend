@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 
 import DeleteAccountFlow from 'src/components/Shared/Users/DeleteAccountFlow';
-import ParticipantSideBar from 'src/components/ParticipantViewShared/ParticipantSideBar';
+import ParticipantSideBar from 'src/components/ParticipantViewShared/Sidebar/ParticipantSideBar';
 
 const Profile = () => {
   return (

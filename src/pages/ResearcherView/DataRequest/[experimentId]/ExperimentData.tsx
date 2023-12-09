@@ -8,7 +8,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
 import axios from 'src/utils/axiosInstance';
-import ResearcherSideBar from 'src/components/ResearcherViewShared/ResearcherSideBar';
+import ResearcherSideBar from 'src/components/ResearcherViewShared/Sidebar/ResearcherSideBar';
 
 type GameObject = {
   status: string;

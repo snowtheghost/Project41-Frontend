@@ -1,5 +1,5 @@
-import FeedbackForm from 'src/components/ParticipantViewShared/FeedbackForm';
-import ParticipantSideBar from '../../../components/ParticipantViewShared/ParticipantSideBar';
+import FeedbackForm from 'src/components/ParticipantViewShared/Feedback/FeedbackForm';
+import ParticipantSideBar from '../../../components/ParticipantViewShared/Sidebar/ParticipantSideBar';
 import Box from '@mui/material/Box';
 
 const ParticipantFeedback = () => {

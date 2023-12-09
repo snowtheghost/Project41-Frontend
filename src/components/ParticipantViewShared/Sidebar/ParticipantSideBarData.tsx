@@ -1,5 +1,4 @@
 import * as FaIcons from 'react-icons/fa';
-import * as AntIcons from 'react-icons/ai';
 
 export const ParticipantSideBarData = [
   {

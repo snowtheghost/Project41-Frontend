@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
-import ParticipantSideBar from '../../../components/ParticipantViewShared/ParticipantSideBar';
-import RewardsTable from 'src/components/ParticipantViewShared/RewardTable';
+import ParticipantSideBar from '../../../components/ParticipantViewShared/Sidebar/ParticipantSideBar';
+import RewardsTable from 'src/components/ParticipantViewShared/Rewards/RewardTable';
 
 const Rewards = () => {
   return (

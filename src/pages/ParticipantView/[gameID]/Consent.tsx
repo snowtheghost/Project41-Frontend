@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import GameSideBar from 'src/components/ParticipantViewShared/GameShared/GameSideBar';
-import InformedConsent from 'src/components/ParticipantViewShared/GameShared/InformedConsent';
+import GameSideBar from 'src/components/ParticipantViewShared/[gameID]/GameSidebar/GameSideBar';
+import InformedConsent from 'src/components/ParticipantViewShared/[gameID]/InformedConsent';
 
 const messageStyle = {
   position: 'absolute',
@@ -19,8 +19,7 @@ const messageStyle = {
   p: 4,
 };
 
-const GameConsent: React.FC = () =>{
-
+const GameConsent: React.FC = () => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
@@ -45,14 +44,14 @@ const GameConsent: React.FC = () =>{
       <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby="message-title"
-        aria-describedby="message-description"
+        aria-labelledby='message-title'
+        aria-describedby='message-description'
       >
         <Box sx={messageStyle}>
-          <Typography id="message-title" variant="h6" component="h2">
+          <Typography id='message-title' variant='h6' component='h2'>
             Consent Confirmation
           </Typography>
-          <Typography id="message-description" sx={{ mt: 2 }}>
+          <Typography id='message-description' sx={{ mt: 2 }}>
             You have agreed to the Consent Form.
           </Typography>
           <Button onClick={handleClose} sx={{ mt: 2 }}>
@@ -60,7 +59,6 @@ const GameConsent: React.FC = () =>{
           </Button>
         </Box>
       </Modal>
-
     </Box>
   );
 };

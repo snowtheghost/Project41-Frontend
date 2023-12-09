@@ -1,10 +1,8 @@
 import { Box } from '@mui/material';
-import FeedbackForm from 'src/components/ParticipantViewShared/FeedbackForm';
-import GameSideBar from 'src/components/ParticipantViewShared/GameShared/GameSideBar';
-
+import FeedbackForm from 'src/components/ParticipantViewShared/Feedback/FeedbackForm';
+import GameSideBar from 'src/components/ParticipantViewShared/[gameID]/GameSidebar/GameSideBar';
 
 const GameFeedback = () => {
-
   return (
     <Box
       sx={{
@@ -14,10 +12,8 @@ const GameFeedback = () => {
         height: '100vh',
       }}
     >
-
       <GameSideBar />
-      <FeedbackForm title="Feedback for game and research" />
-
+      <FeedbackForm title='Feedback for game and research' />
     </Box>
   );
 };
