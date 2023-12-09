@@ -39,11 +39,12 @@ const DeleteAccountFlow = (props: Props) => {
     <>
       <Button
         sx={{
-          marginTop: '2.5rem',
-          margin: '1rem',
-          width: '100%',
-          backgroundColor: '#ff0000',
-          color: '#05004E',
+          'marginTop': '2.5rem',
+          'margin': '1rem',
+          'width': '100%',
+          'backgroundColor': '#cb2e2e',
+          'color': '#f9f8eb',
+          ':hover': { backgroundColor: '#e27c7c' },
         }}
         onClick={() => setOpen(true)}
       >
@@ -60,7 +61,11 @@ const DeleteAccountFlow = (props: Props) => {
           <Button onClick={() => setOpen(false)}>Back</Button>
           <Button
             onClick={() => handleDelete()}
-            sx={{ backgroundColor: '#ff0000', color: '#000000' }}
+            sx={{
+              'backgroundColor': '#ff0000',
+              'color': '#f9f8eb',
+              ':hover': { backgroundColor: '#e27c7c' },
+            }}
           >
             {isLoading ? <FullPageSpinner /> : 'Delete Account'}
           </Button>
