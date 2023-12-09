@@ -1,5 +1,5 @@
 import GamesList from 'src/components/ParticipantViewShared/GamesList';
-import ParticipantSideBar from '../../components/ParticipantViewShared/ParticipantSideBar';
+import ParticipantSideBar from '../../../components/ParticipantViewShared/ParticipantSideBar';
 import Box from '@mui/material/Box';
 
 const PlayHistory = () => {
