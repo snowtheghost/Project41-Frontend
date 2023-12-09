@@ -43,6 +43,7 @@ const DeleteAccountFlow = (props: Props) => {
           margin: '1rem',
           width: '100%',
           backgroundColor: '#ff0000',
+          color: '#05004E',
         }}
         onClick={() => setOpen(true)}
       >
