@@ -1,9 +1,9 @@
 import axios from 'src/utils/axiosInstance';
 
-const fetchCSV = async (gameType: string) => {
+const fetchGamesCSV = async (gameType: string) => {
   try {
     await axios
-      .get(`/games/getGameAnalytics?gameType=${gameType}`)
+      .get(`/games/getGamesCsv?gameType=${gameType}`)
       .then((response) => {
         const url = window.URL.createObjectURL(new Blob([response.data]));
         const link = document.createElement('a');
@@ -17,4 +17,4 @@ const fetchCSV = async (gameType: string) => {
   }
 };
 
-export default fetchCSV;
+export default fetchGamesCSV;

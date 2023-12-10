@@ -1,6 +1,12 @@
+import { useState } from 'react';
+
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
+import axios from 'src/utils/axiosInstance';
 import DeleteAccountFlow from 'src/components/Shared/Users/DeleteAccountFlow';
 import ResearcherExperimentList from 'src/components/ResearcherViewShared/MyResearch/ResearcherExperimentList';
 import ResearcherProfileInfo from 'src/components/ResearcherViewShared/MyResearch/ResearcherProfileInfo';
@@ -14,6 +20,28 @@ const MyResearch = () => {
     { gameName: 'Trust', participants: 0 },
     { gameName: 'Ultimatum', participants: 0 },
   ];
+
+  const [isLoadingCSV, setIsLoadingCSV] = useState(false);
+  const [fetchFailed, setFetchFailed] = useState(false);
+
+  const fetchCSV = async () => {
+    try {
+      // Using researcherId=1 for now as a placeholder until other researchers can store their data.
+      await axios.get(`/games/getGamesCsv?researcherId=1`).then((response) => {
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', `results.csv`);
+        document.body.appendChild(link);
+        link.click();
+        setIsLoadingCSV(false);
+      });
+    } catch (error) {
+      console.error(error);
+      setFetchFailed(true);
+      setIsLoadingCSV(false);
+    }
+  };
 
   return (
     <Grid
@@ -32,6 +60,27 @@ const MyResearch = () => {
             >
               Research Experiments
             </Typography>
+            <Box sx={{ margin: '1rem' }}>
+              <Button
+                sx={{
+                  'color': '#f9f8eb',
+                  'backgroundColor': '#05004e',
+                  ':hover': { backgroundColor: '#f9f8eb', color: '#05004e' },
+                }}
+                onClick={() => {
+                  setIsLoadingCSV(true);
+                  setFetchFailed(false);
+                  fetchCSV();
+                }}
+              >
+                {!isLoadingCSV ? 'Export to CSV' : <CircularProgress />}
+              </Button>
+              {fetchFailed && (
+                <Typography sx={{ color: '#cb2e2e' }}>
+                  Failed to download CSV. Please try again later.
+                </Typography>
+              )}
+            </Box>
             <ResearcherExperimentList experimentList={experimentList} />
           </Grid>
           <DeleteAccountFlow userType={'RESEARCHER'} />

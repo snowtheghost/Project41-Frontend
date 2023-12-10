@@ -62,7 +62,7 @@ const DeleteAccountFlow = (props: Props) => {
           <Button
             onClick={() => handleDelete()}
             sx={{
-              'backgroundColor': '#ff0000',
+              'backgroundColor': '#cb2e2e',
               'color': '#f9f8eb',
               ':hover': { backgroundColor: '#e27c7c' },
             }}
