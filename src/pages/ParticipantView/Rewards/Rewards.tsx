@@ -1,9 +1,9 @@
 import Box from '@mui/material/Box';
 
 import ParticipantSideBar from 'src/components/ParticipantViewShared/Sidebar/ParticipantSideBar';
-import GamesList from 'src/components/ParticipantViewShared/GameLibrary/GamesList';
+import RewardsTable from 'src/components/ParticipantViewShared/Rewards/RewardTable';
 
-const GameLibraryIndex = () => {
+const Rewards = () => {
   return (
     <Box
       sx={{
@@ -14,9 +14,9 @@ const GameLibraryIndex = () => {
       }}
     >
       <ParticipantSideBar />
-      <GamesList />
+      <RewardsTable />
     </Box>
   );
 };
 
-export default GameLibraryIndex;
+export default Rewards;

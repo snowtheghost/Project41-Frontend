@@ -1,9 +1,9 @@
 import Box from '@mui/material/Box';
 
-import ParticipantSideBar from 'src/components/ParticipantViewShared/Sidebar/ParticipantSideBar';
 import GamesList from 'src/components/ParticipantViewShared/GameLibrary/GamesList';
+import ParticipantSideBar from 'src/components/ParticipantViewShared/Sidebar/ParticipantSideBar';
 
-const GameLibraryIndex = () => {
+const PlayHistory = () => {
   return (
     <Box
       sx={{
@@ -14,9 +14,10 @@ const GameLibraryIndex = () => {
       }}
     >
       <ParticipantSideBar />
+      {/* // TODO: add games={gamesData} for play history games */}
       <GamesList />
     </Box>
   );
 };
 
-export default GameLibraryIndex;
+export default PlayHistory;

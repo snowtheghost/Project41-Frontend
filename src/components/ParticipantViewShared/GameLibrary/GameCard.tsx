@@ -11,7 +11,7 @@ type Props = {
   game: string;
 };
 
-const ExperimentCard = (props: Props) => {
+const GameCard = (props: Props) => {
   const { title, description, game } = props;
 
   return (
@@ -29,22 +29,15 @@ const ExperimentCard = (props: Props) => {
         <Typography sx={{ fontSize: 24, fontWeight: 800 }} gutterBottom>
           {title}
         </Typography>
-        <Typography sx={{ fontSize: 18, fontWeight: 500 }}>
-          Description:
-        </Typography>
         <Typography variant='body2' color='text.secondary' sx={{ mb: 1.5 }}>
           {description}
         </Typography>
-        <Link
-          component={RouterLink}
-          to={`/datarequest/${game}`}
-          sx={{ mt: 'auto' }}
-        >
-          View Results
+        <Link component={RouterLink} to={`/${game}/home`} sx={{ mt: 'auto' }}>
+          Play Game
         </Link>
       </CardContent>
     </Card>
   );
 };
 
-export default ExperimentCard;
+export default GameCard;
